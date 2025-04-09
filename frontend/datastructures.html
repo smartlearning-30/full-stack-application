@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATA STRUCTURES Tutorial</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="subject.css">
+    <script src="keypointstore.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top mb-5">
+        <div class="container-fluid">
+            <a class="navbar-brand style" href="index.html"><img class="image" src="https://as1.ftcdn.net/v2/jpg/02/14/74/88/1000_F_214748867_uoPLgrfEmrGErjMLKkyn15O7ZMSqXvIH.jpg" /></a>
+            <a class="navbar-brand style" href="index.html">SMART LEARNING</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-link navabar-text" href="python.html">Python</a>
+                    <a class="nav-link navabar-text" href="JAVA.html">JAVA</a>
+                    <a class="nav-link navabar-text" href="operatingsystem.html">Operating System</a>
+                    <a class="nav-link navabar-text" href="DBMS.html">DBMS</a>
+                    <a class="nav-link navabar-text" href="c.html">C Programming</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="smart-user-widget" style="margin-top: 54px;" id="userWidget">
+        <div class="user-button" id="userButton">👤</div>
+        <div class="user-panel" id="userPanel">
+            <div class="user-name-display">
+                <span class="user-name-text"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-3 col-lg-2 d-none d-md-block bg-dark sidebar">
+                <div class="sidebar-sticky">
+                    <h4 class="text-center text-light pt-3">Topics</h4>
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link active text-light" href="#Introduction">Introduction</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="dsquiz.html">DS Quiz</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" onclick="loadCheatSheet('dsa')">DS Cheat Sheet</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Types">Types of Data Structures</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Arrays">Arrays</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#LinkedLists">Linked Lists</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Stacks">Stacks</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Queues">Queues</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Trees">Trees</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Graphs">Graphs</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#HashTables">Hash Tables</a></li>
+                    </ul>
+                </div>
+            </nav>
+    
+            <nav class="col-12 d-block d-md-none bg-dark" style="margin-top:65px;">
+                <div class="text-left py-2">
+                    <button class="btn btn-light" data-toggle="collapse" data-target="#mobileMenu">Topics</button>
+                </div>
+                <div id="mobileMenu" class="collapse bg-dark">
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link active text-light" href="#Introduction">Introduction</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Types">Types of Data Structures</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Arrays">Arrays</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#LinkedLists">Linked Lists</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Stacks">Stacks</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Queues">Queues</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Trees">Trees</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Graphs">Graphs</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#HashTables">Hash Tables</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div id="Introduction" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-4">
+                <h2 class="mt-5 featurespage-mnheading">Data Structures Introduction</h2>
+                <hr>
+                <p>Data structures are a way of organizing and storing data so that they can be accessed and modified efficiently. They are essential for designing efficient algorithms and managing large amounts of data.</p>
+                <h1 class="featurespage-heading">Why Use Data Structures?</h1>
+                <ul>
+                    <li><strong>Efficient data management:</strong> Data structures help in organizing data in a way that makes it easy to access and modify.</li>
+                    <li><strong>Improved performance of algorithms:</strong> Proper use of data structures can significantly improve the performance of algorithms.</li>
+                    <li><strong>Facilitates data manipulation and retrieval:</strong> Data structures provide various methods for data manipulation and retrieval, making it easier to work with large datasets.</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Introduction To Data Structures</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Introduction To Data Structures</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Introduction To Data Structures</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>              
+            </div>
+
+            <div id="Types" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">Types of Data Structures</h2>
+                <p>Data structures can be classified into two main categories:</p>
+                <h1 class="featurespage-heading">1) Linear Data Structures</h1>
+                <p>Data elements are arranged in a sequential manner. Examples include:</p>
+                <ul>
+                    <li><strong>Arrays:</strong> A collection of elements identified by index or key.</li>
+                    <li><strong>Linked Lists:</strong> A sequence of nodes where each node points to the next node.</li>
+                    <li><strong>Stacks:</strong> A collection of elements with Last In First Out (LIFO) principle.</li>
+                    <li><strong>Queues:</strong> A collection of elements with First In First Out (FIFO) principle.</li>
+                </ul>
+                <h1 class="featurespage-heading">2) Non-Linear Data Structures</h1>
+                <p>Data elements are not arranged sequentially. Examples include:</p>
+                <ul>
+                    <li><strong>Trees:</strong> A hierarchical structure with a root value and subtrees of children.</li>
+                    <li><strong>Graphs:</strong> A collection of nodes connected by edges.</li>
+                    <li><strong>Hash Tables:</strong> A data structure that maps keys to values for efficient lookup.</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Types of Data Structures</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Types of Data Structures</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Types of Data Structures</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Arrays" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">Arrays</h2>
+                <p>An array is a collection of items stored at contiguous memory locations. It is one of the simplest and most widely used data structures.</p>
+                <h1>Declaring Arrays</h1>
+                <p>Arrays can be declared as follows:</p>
+                <div class="code-container">
+                    int arr[10]; // Declaration of an array
+                </div>
+                <h1>Advantages of Arrays</h1>
+                <ul>
+                    <li><strong>Random Access:</strong> Elements can be accessed directly using their index.</li>
+                    <li><strong>Memory Efficiency:</strong> Arrays use contiguous memory, which makes them memory efficient.</li>
+                </ul>
+                <h1>Disadvantages of Arrays</h1>
+                <ul>
+                    <li><strong>Fixed Size:</strong> The size of the array is fixed and cannot be changed dynamically.</li>
+                    <li><strong>Insertion and Deletion:</strong> Insertion and deletion operations are costly as elements need to be shifted.</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Arrays In Data Structures</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Arrays In Data Structures</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Arrays In Data Structures</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="LinkedLists" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">Linked Lists</h2>
+                <p>A linked list is a linear data structure where elements are stored in nodes, and each node points to the next node. Unlike arrays, linked lists are dynamic in size.</p>
+                <h1>Types of Linked Lists</h1>
+                <ul>
+                    <li><strong>Singly Linked List:</strong> Each node points to the next node in the sequence.</li>
+                    <li><strong>Doubly Linked List:</strong> Each node has two pointers, one pointing to the next node and one pointing to the previous node.</li>
+                    <li><strong>Circular Linked List:</strong> The last node points back to the first node, forming a circle.</li>
+                </ul>
+                <h1>Advantages of Linked Lists</h1>
+                <ul>
+                    <li><strong>Dynamic Size:</strong> Linked lists can grow and shrink in size during runtime.</li>
+                    <li><strong>Efficient Insertions/Deletions:</strong> Insertions and deletions are more efficient compared to arrays.</li>
+                </ul>
+                <h1>Disadvantages of Linked Lists</h1>
+                <ul>
+                    <li><strong>Memory Usage:</strong> Each node requires extra memory for the pointer.</li>
+                    <li><strong>No Random Access:</strong> Elements cannot be accessed directly; traversal is required.</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Linked Lists In Data Structures</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Linked Lists In Data Structures</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Linked Lists In Data Structures</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Stacks" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">Stacks</h2>
+                <p>A stack is a linear data structure that follows the Last In First Out (LIFO) principle. The last element added to the stack will be the first one to be removed.</p>
+                <h1>Operations on Stacks</h1>
+                <ul>
+                    <li><strong>Push:</strong> Add an item to the top of the stack.</li>
+                    <li><strong>Pop:</strong> Remove the item from the top of the stack.</li>
+                    <li><strong>Peek:</strong> Get the top item without removing it.</li>
+                </ul>
+                <h1>Applications of Stacks</h1>
+                <ul>
+                    <li><strong>Function Calls:</strong> Stacks are used to manage function calls and recursion.</li>
+                    <li><strong>Expression Evaluation:</strong> Stacks are used in evaluating expressions (e.g., infix to postfix conversion).</li>
+                    <li><strong>Undo Mechanism:</strong> Stacks are used in applications like text editors for undo operations.</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Stacks In Data Structures</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Stacks In Data Structures</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Stacks In Data Structures</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Queues" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">Queues</h2>
+                <p>A queue is a linear data structure that follows the First In First Out (FIFO) principle. The first element added to the queue will be the first one to be removed.</p>
+                <h1>Operations on Queues</h1>
+                <ul>
+                    <li><strong>Enqueue:</strong> Add an item to the end of the queue.</li>
+                    <li><strong>Dequeue:</strong> Remove the item from the front of the queue.</li>
+                    <li><strong>Front:</strong> Get the front item without removing it.</li>
+                </ul>
+                <h1>Applications of Queues</h1>
+                <ul>
+                    <li><strong>Task Scheduling:</strong> Queues are used in operating systems for task scheduling.</li>
+                    <li><strong>Print Queue:</strong> Queues are used in printing systems to manage print jobs.</li>
+                    <li><strong>Breadth-First Search:</strong> Queues are used in graph algorithms like BFS.</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Queues In Data Structures</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Queues In Data Structures</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Queues In Data Structures</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Trees" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">Trees</h2>
+                <p>A tree is a non-linear data structure that simulates a hierarchical tree structure. It consists of nodes connected by edges, with one node designated as the root.</p>
+                <h1>Types of Trees</h1>
+                <ul>
+                    <li><strong>Binary Tree:</strong> A tree where each node has at most two children.</li>
+                    <li><strong>Binary Search Tree:</strong> A binary tree where the left child contains values less than the parent, and the right child contains values greater than the parent.</li>
+                    <li><strong>AVL Tree:</strong> A self-balancing binary search tree.</li>
+                    <li><strong>Red-Black Tree:</strong> A balanced binary search tree with additional properties to ensure balance.</li>
+                </ul>
+                <h1>Applications of Trees</h1>
+                <ul>
+                    <li><strong>File Systems:</strong> Trees are used to represent file systems.</li>
+                    <li><strong>Database Indexing:</strong> Trees are used in databases for indexing.</li>
+                    <li><strong>Decision Trees:</strong> Trees are used in machine learning for decision-making processes.</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Trees In Data Structures</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Trees In Data Structures</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Trees In Data Structures</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Graphs" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">Graphs</h2>
+                <p>A graph is a non-linear data structure consisting of nodes (vertices) and edges. Graphs are used to represent networks, such as social networks, transportation systems, etc.</p>
+                <h1>Types of Graphs</h1>
+                <ul>
+                    <li><strong>Directed Graph:</strong> A graph where edges have a direction.</li>
+                    <li><strong>Undirected Graph:</strong> A graph where edges do not have a direction.</li>
+                    <li><strong>Weighted Graph:</strong> A graph where edges have weights or costs associated with them.</li>
+                    <li><strong>Unweighted Graph:</strong> A graph where edges do not have weights.</li>
+                </ul>
+                <h1>Applications of Graphs</h1>
+                <ul>
+                    <li><strong>Social Networks:</strong> Graphs are used to represent social networks where nodes represent users and edges represent connections.</li>
+                    <li><strong>Routing Algorithms:</strong> Graphs are used in routing algorithms like Dijkstra's algorithm.</li>
+                    <li><strong>Recommendation Systems:</strong> Graphs are used in recommendation systems to suggest products or content.</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Graphs In Data Structures</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Graphs In Data Structures</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Graphs In Data Structures</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="HashTables" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">Hash Tables</h2>
+                <p>A hash table is a data structure that implements an associative array abstract data type, a structure that can map keys to values. It uses a hash function to compute an index into an array of buckets or slots, from which the desired value can be found.</p>
+                <h1>Operations on Hash Tables</h1>
+                <ul>
+                    <li><strong>Insertion:</strong> Add a key-value pair to the hash table.</li>
+                    <li><strong>Deletion:</strong> Remove a key-value pair from the hash table.</li>
+                    <li><strong>Searching:</strong> Retrieve the value associated with a given key.</li>
+                </ul>
+                <h1>Applications of Hash Tables</h1>
+                <ul>
+                    <li><strong>Database Indexing:</strong> Hash tables are used in databases for indexing.</li>
+                    <li><strong>Caching:</strong> Hash tables are used in caching mechanisms like memoization.</li>
+                    <li><strong>Symbol Tables:</strong> Hash tables are used in compilers for symbol tables.</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Hash Tables In Data Structures</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Hash Tables In Data Structures</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('data-structures',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Hash Tables In Data Structures</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Cheat Sheet Section-->
+    <div class="modal fade" id="cheatSheetModal" tabindex="-1" aria-labelledby="cheatSheetTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cheatSheetTitle">Cheat Sheet</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="cheatSheetContent">
+                    Loading...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveNotesBtn">Save Notes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="floating-btn d-block d-md-none" onclick="scrollToTop()">↑</button>
+</body>
+</html>

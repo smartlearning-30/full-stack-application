@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Tutorial</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="subject.css">
+    <script src="keypointstore.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top mb-5">
+        <div class="container-fluid">
+            <a class="navbar-brand style" href="index.html"><img class="image" src="https://as1.ftcdn.net/v2/jpg/02/14/74/88/1000_F_214748867_uoPLgrfEmrGErjMLKkyn15O7ZMSqXvIH.jpg" /></a>
+            <a class="navbar-brand style" href="index.html">SMART LEARNING</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-link navabar-text" href="python.html">Python</a>
+                    <a class="nav-link navabar-text" href="JAVA.html">JAVA</a>
+                    <a class="nav-link navabar-text" href="operatingsystem.html">Operating System</a>
+                    <a class="nav-link navabar-text" href="datastructures.html">Data Structures</a>
+                    <a class="nav-link navabar-text" href="DBMS.html">DBMS</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="smart-user-widget" style="margin-top: 54px;" id="userWidget">
+        <div class="user-button" id="userButton">👤</div>
+        <div class="user-panel" id="userPanel">
+            <div class="user-name-display">
+                <span class="user-name-text"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-3 col-lg-2 d-none d-md-block bg-dark sidebar">
+                <div class="sidebar-sticky">
+                    <h4 class="text-center text-light pt-3">Topics</h4>
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link active text-light" href="#Introduction">Introduction</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="cquiz.html">C Quiz</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" onclick="loadCheatSheet('c_programming')">C Cheat Sheet</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CFeatures">C Features</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CVariables">C Variables</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CDataTypes">C Data Types</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#COperators">C Operators</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CControlStatements">C Control Statements</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CFunctions">C Functions</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CStrings">C Strings</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CArrays">C Arrays</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CPointers">C Pointers</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CStructures">C Structures</a></li>
+                    </ul>
+                </div>
+            </nav>
+    
+            <nav class="col-12 d-block d-md-none bg-dark" style="margin-top:65px;">
+                <div class="text-left py-2">
+                    <button class="btn btn-light" data-toggle="collapse" data-target="#mobileMenu">Topics</button>
+                </div>
+                <div id="mobileMenu" class="collapse bg-dark">
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link active text-light" href="#Introduction">Introduction</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CFeatures">C Features</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CVariables">C Variables</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CDataTypes">C Data Types</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#COperators">C Operators</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CControlStatements">C Control Statements</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CFunctions">C Functions</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CStrings">C Strings</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CArrays">C Arrays</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CPointers">C Pointers</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#CStructures">C Structures</a></li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div id="Introduction" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-4">
+                <h2 class="mt-5 featurespage-mnheading">C Language Introduction</h2>
+                <hr>
+                <p>C is a high-level and general-purpose programming language that is ideal for developing firmware or portable applications.</p>
+                <h1 class="featurespage-heading">What is C?</h1>
+                <p>C is a structured programming language that provides low-level access to memory and is widely used for system programming.</p>
+                <h1 class="featurespage-heading">Why Learn C?</h1>
+                <ul>
+                    <li>Foundation for many programming languages.</li>
+                    <li>Widely used in system and application software.</li>
+                    <li>High performance and efficiency.</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Introduction To C Language</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',81)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Introduction To C</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',82)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Introduction To C</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>           
+            </div>
+
+            <div id="CFeatures" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">Features of C Language</h2>
+                <p>C provides several features that make it a popular programming language:</p>
+                <h1 class="featurespage-heading">1) Simple</h1>
+                <p>C is easy to learn and understand.</p>
+                <h1 class="featurespage-heading">2) Efficient</h1>
+                <p>C provides low-level access to memory, making it efficient.</p>
+                <h1 class="featurespage-heading">3) Structured</h1>
+                <p>C supports structured programming, which helps in organizing code.</p>
+                <h1 class="featurespage-heading">4) Portability</h1>
+                <p>C programs can be compiled on different machines with little or no modification.</p>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Features Of C Language</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',83)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Features Of C</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',84)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Features Of C</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+            <div id="CVariables" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">C Variables</h2>
+                <p>A variable in C is a storage location identified by a name that can hold a value.</p> 
+                <h1 class="featurespage-heading">Types of Variables</h1>
+                <ul class="list-style">
+                    <li>Local Variables</li>
+                    <li>Global Variables</li>
+                    <li>Static Variables</li>
+                </ul>
+                <h1>Declaring Variables</h1>
+                <p>In C, you declare a variable by specifying its type followed by its name:</p>
+                <div class="code-container">
+                    int number; // Declaration
+                    number = 10; // Initialization
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Variables In C</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',85)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Variables In C</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',86)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Variables In C</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+            <div id="CDataTypes" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">C Data Types</h2>
+                <p>Data types in C specify the type of data that can be stored in a variable.</p>
+                <h1>Basic Data Types</h1>
+                <ul>
+                    <li>int: Integer data type</li>
+                    <li>float: Floating-point data type</li>
+                    <li>char: Character data type</li>
+                    <li>double: Double precision floating-point data type</li>
+                </ul>
+                <h1>Derived Data Types</h1>
+                <p>Derived data types are used to create complex data types:</p>
+                <ul>
+                    <li>Arrays</li>
+                    <li>Structures</li>
+                    <li>Unions</li>
+                    <li>Pointers</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Data Types In C</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',87)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Data Types In C</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',88)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Data Types In C</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+            <div id="COperators" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">C Operators</h2>
+                <p>Operators are symbols that tell the compiler to perform specific mathematical or logical manipulations.</p>
+                <h1>Types of Operators</h1>
+                <ul>
+                    <li>Arithmetic Operators</li>
+                    <li>Relational Operators</li>
+                    <li>Logical Operators</li>
+                    <li>Bitwise Operators</li>
+                    <li>Assignment Operators</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Operators In C</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',89)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Operators In C</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',90)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Operators In C</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+            <div id="CControlStatements" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">C Control Statements</h2>
+                <p>Control statements are used to control the flow of execution of the program.</p>
+                <h1>Types of Control Statements</h1>
+                <ul>
+                    <li>Conditional Statements (if, switch)</li>
+                    <li>Looping Statements (for, while, do-while)</li>
+                    <li>Jump Statements (break, continue, return)</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Control Statements In C</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',91)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Control Statements In C</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',92)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Control Statements In C</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+            <div id="CFunctions" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">C Functions</h2>
+                <p>A function is a block of code that performs a specific task.</p>
+                <h1>Types of Functions</h1>
+                <ul>
+                    <li>Standard Library Functions</li>
+                    <li>User-defined Functions</li>
+                </ul>
+                <h1>Function Declaration</h1>
+                <p>In C, a function is declared by specifying its return type, name, and parameters:</p>
+                <div class="code-container">
+                    int add(int a, int b); // Function declaration
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Functions In C</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',102)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Functions In C</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',93)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Functions In C</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+            <div id="CStrings" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">C Strings</h2>
+                <p>A string in C is an array of characters terminated by a null character.</p>
+                <h1>Declaring Strings</h1>
+                <p>Strings can be declared as follows:</p>
+                <div class="code-container">
+                    char str[20]; // Declaration of a string
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Strings In C</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',94)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Strings In C</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',95)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Strings In C</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+            <div id="CArrays" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">C Arrays</h2>
+                <p>An array is a collection of items stored at contiguous memory locations.</p>
+                <h1>Declaring Arrays</h1>
+                <p>Arrays can be declared as follows:</p>
+                <div class="code-container">
+                    int arr[10]; // Declaration of an array
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Arrays In C</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',96)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Arrays In C</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',97)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Arrays In C</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+            <div id="CPointers" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">C Pointers</h2>
+                <p>A pointer is a variable that stores the address of another variable.</p>
+                <h1>Declaring Pointers</h1>
+                <p>Pointers can be declared as follows:</p>
+                <div class="code-container">
+                    int *ptr; // Declaration of a pointer
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Pointers In C</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',98)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Pointers In C</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',99)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Pointers In C</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+            <div id="CStructures" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">C Structures</h2>
+                <p>A structure is a user-defined data type that allows grouping of variables of different types.</p>
+                <h1>Declaring Structures</h1>
+                <p>Structures can be declared as follows:</p>
+                <div class="code-container">
+                    struct Student {<br>
+                      char name[50];<br>
+                      int age;<br>
+                    };<br>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Structures In C</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',100)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Structures In C</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('c',101)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Structures In C</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <!--Cheat Sheet Section-->
+<div class="modal fade" id="cheatSheetModal" tabindex="-1" aria-labelledby="cheatSheetTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cheatSheetTitle">Cheat Sheet</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="cheatSheetContent">
+                Loading...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveNotesBtn">Save Notes</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <button class="floating-btn d-block d-md-none" onclick="scrollToTop()">↑</button>
+</body>
+</html>

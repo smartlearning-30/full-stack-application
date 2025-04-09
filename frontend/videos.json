@@ -1,0 +1,558 @@
+[
+  {
+    "subject": "python",
+    "title": "Python Programming Basics",
+    "videos": [
+      {
+        "title": "Introduction to Python",
+        "videoUrl": "https://www.youtube.com/embed/ZkndfcIyxMM?rel=0",
+        "comment": "1"
+      },
+      {
+        "title": "Introduction to Python (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/DInMru2Eq6E?rel=0",
+        "comment": "2"
+      },
+      {
+        "title": "Python Features",
+        "videoUrl": "https://www.youtube.com/embed/Klftxr6oHvc?rel=0",
+        "comment": "3"
+      },
+      {
+        "title": "Python Features (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/qJ6Z0aCko6M?rel=0",
+        "comment": "4"
+      },
+      {
+        "title": "Python Variables",
+        "videoUrl": "https://www.youtube.com/embed/_NOGsr_5Muc?rel=0",
+        "comment": "29"
+      },
+      {
+        "title": "Python Variables (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/a43BIxiZ5EM?rel=0",
+        "comment": "30"
+      },
+      {
+        "title": "Python DataTypes",
+        "videoUrl": "https://www.youtube.com/embed/ApZ751un7t8?rel=0",
+        "comment": "5"
+      },
+      {
+        "title": "Python DataTypes (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/TTepNRy0wj8?rel=0",
+        "comment": "6"
+      },
+      {
+        "title": "Python KeyWords",
+        "videoUrl": "https://www.youtube.com/embed/-NDzi6yJQLg?rel=0",
+        "comment": "7"
+      },
+      {
+        "title": "Python KeyWords (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rbWJXGR_scc?rel=0",
+        "comment": "8"
+      },
+      {
+        "title": "Python Literals",
+        "videoUrl": "https://www.youtube.com/embed/BRhnSO-DU1k?rel=0",
+        "comment": "9"
+      },
+      {
+        "title": "Python Literals (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/n7FOE3etRvY?rel=0",
+        "comment": "10"
+      },
+      {
+        "title": "Python Operators",
+        "videoUrl": "https://www.youtube.com/embed/f02EiJt94pQ?rel=0",
+        "comment": "11"
+      },
+      {
+        "title": "Python Operators (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/VdEfCoYaxfI?rel=0",
+        "comment": "12"
+      },
+      {
+        "title": "Python Loops",
+        "videoUrl": "https://www.youtube.com/embed/94UHCEmprCY?rel=0",
+        "comment": "13"
+      },
+      {
+        "title": "Python Loops (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/e1RBzKGNbR0?rel=0",
+        "comment": "14"
+      },
+      {
+        "title": "Python Strings",
+        "videoUrl": "https://www.youtube.com/embed/Ctqi5Y4X-jA?rel=0",
+        "comment": "15"
+      },
+      {
+        "title": "Python Strings (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/IWk44K-6bnQ?rel=0",
+        "comment": "16"
+      },
+      {
+        "title": "Python Lists",
+        "videoUrl": "https://www.youtube.com/embed/9OeznAkyQz4?rel=0",
+        "comment": "17"
+      },
+      {
+        "title": "Python Lists (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/n4orr02dEvw?rel=0",
+        "comment": "18"
+      },
+      {
+        "title": "Python Tuples",
+        "videoUrl": "https://www.youtube.com/embed/zLFituJxj6c?rel=0",
+        "comment": "19"
+      },
+      {
+        "title": "Python Tuples (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/JMVAmiO_hCE?rel=0",
+        "comment": "20"
+      },
+      {
+        "title": "Python Dictionary",
+        "videoUrl": "https://www.youtube.com/embed/C29qMZb9HrA?rel=0",
+        "comment": "21"
+      },
+      {
+        "title": "Python Dictionary (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/gS05stoDtvM?rel=0",
+        "comment": "22"
+      },
+      {
+        "title": "Python Lambda Functions",
+        "videoUrl": "https://www.youtube.com/embed/hYzwCsKGRrg?rel=0",
+        "comment": "23"
+      },
+      {
+        "title": "Python Lambda Functions (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/FVB8OZ6Dlas?rel=0",
+        "comment": "24"
+      },
+      {
+        "title": "Python Modules",
+        "videoUrl": "https://www.youtube.com/embed/L6BoHn8NdX4?rel=0",
+        "comment": "25"
+      },
+      {
+        "title": "Python Modules (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/Q1rRxNQXA4c?rel=0",
+        "comment": "26"
+      },
+      {
+        "title": "Python Exceptions",
+        "videoUrl": "https://www.youtube.com/embed/uCKDd8Q6juU?rel=0",
+        "comment": "27"
+      },
+      {
+        "title": "Python Exceptions (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rcvM5o2hwow?rel=0",
+        "comment": "28"
+      }
+    ]
+  },
+  {
+    "subject": "DBMS",
+    "title": "Database Management System",
+    "videos": [
+      {
+        "title": "Introduction to DBMS",
+        "videoUrl": "https://www.youtube.com/embed/T7AxM7Vqvaw?rel=0",
+        "comment": "29"
+      },
+      {
+        "title": "Introduction to DBMS (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/ZaaSa1TtqXY?rel=0",
+        "comment": "30"
+      },
+      {
+        "title": "DBMS Features",
+        "videoUrl": "https://www.youtube.com/embed/MOLBZ4D9Y7k?rel=0",
+        "comment": "31"
+      },
+      {
+        "title": "DBMS Features (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/wClEbCyWryI?rel=0",
+        "comment": "32"
+      },
+      {
+        "title": "DBMS Types",
+        "videoUrl": "https://www.youtube.com/embed/ibdb6XlbQBg?rel=0",
+        "comment": "33"
+      },
+      {
+        "title": "DBMS Types (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/mUz0Z3RQ0xo?rel=0",
+        "comment": "34"
+      },
+      {
+        "title": "DBMS Architecture",
+        "videoUrl": "https://www.youtube.com/embed/dftMGbbULhE?rel=0",
+        "comment": "35"
+      },
+      {
+        "title": "DBMS Architecture (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/1jf84tYY6e4?rel=0",
+        "comment": "36"
+      },
+      {
+        "title": "DBMS Models",
+        "videoUrl": "https://www.youtube.com/embed/9sVRzsupaBM?rel=0",
+        "comment": "37"
+      },
+      {
+        "title": "DBMS Models (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/ZS-hr7Ho3RQ?rel=0",
+        "comment": "38"
+      }
+    ]
+  },
+  {
+    "subject": "java",
+    "title": "Java Programming",
+    "videos": [
+      {
+        "title": "Introduction to Java",
+        "videoUrl": "https://www.youtube.com/embed/yRpLlJmRo2w?rel=0",
+        "comment": "39"
+      },
+      {
+        "title": "Introduction to Java (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/_3GP0qyTbsI?rel=0",
+        "comment": "40"
+      },
+      {
+        "title": "Java Features",
+        "videoUrl": "https://www.youtube.com/embed/NRtlNM0vMeE?rel=0",
+        "comment": "41"
+      },
+      {
+        "title": "Java Features (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/k-lq-_2_5Uc?rel=0",
+        "comment": "42"
+      },
+      {
+        "title": "Java Variables",
+        "videoUrl": "https://www.youtube.com/embed/tZswK9PWBUo?rel=0",
+        "comment": "43"
+      },
+      {
+        "title": "Java Variables (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/xINs7Qqlk-Y?rel=0",
+        "comment": "44"
+      },
+      {
+        "title": "Java DataTypes",
+        "videoUrl": "https://www.youtube.com/embed/Le25I331_yU?rel=0",
+        "comment": "45"
+      },
+      {
+        "title": "Java DataTypes (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/RcnWMWptnDk?rel=0",
+        "comment": "46"
+      },
+      {
+        "title": "Java KeyWords",
+        "videoUrl": "https://www.youtube.com/embed/Ds5tkyfG-ZQ?rel=0",
+        "comment": "47"
+      },
+      {
+        "title": "Java KeyWords (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/k_SJOnVa_G0?rel=0",
+        "comment": "48"
+      }
+    ]
+  },
+  {
+    "subject": "operating-system",
+    "title": "Operating System",
+    "videos": [
+      {
+        "title": "Introduction to Operating System",
+        "videoUrl": "https://www.youtube.com/embed/-NDzi6yJQLg?rel=0",
+        "comment": "49"
+      },
+      {
+        "title": "Introduction to Operating System (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rbWJXGR_scc?rel=0",
+        "comment": "50"
+      },
+      {
+        "title": "Types of Operating Systems",
+        "videoUrl": "https://www.youtube.com/embed/-NDzi6yJQLg?rel=0",
+        "comment": "51"
+      },
+      {
+        "title": "Types of Operating Systems (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rbWJXGR_scc?rel=0",
+        "comment": "52"
+      },
+      {
+        "title": "Processes",
+        "videoUrl": "https://www.youtube.com/embed/-NDzi6yJQLg?rel=0",
+        "comment": "53"
+      },
+      {
+        "title": "Processes (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rbWJXGR_scc?rel=0",
+        "comment": "54"
+      },
+      {
+        "title": "Threads",
+        "videoUrl": "https://www.youtube.com/embed/-NDzi6yJQLg?rel=0",
+        "comment": "55"
+      },
+      {
+        "title": "Threads (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rbWJXGR_scc?rel=0",
+        "comment": "56"
+      },
+      {
+        "title": "Memory Management",
+        "videoUrl": "https://www.youtube.com/embed/-NDzi6yJQLg?rel=0",
+        "comment": "57"
+      },
+      {
+        "title": "Memory Management (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rbWJXGR_scc?rel=0",
+        "comment": "58"
+      },
+      {
+        "title": "File Systems",
+        "videoUrl": "https://www.youtube.com/embed/-NDzi6yJQLg?rel=0",
+        "comment": "59"
+      },
+      {
+        "title": "File Systems (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rbWJXGR_scc?rel=0",
+        "comment": "60"
+      },
+      {
+        "title": "Deadlocks",
+        "videoUrl": "https://www.youtube.com/embed/-NDzi6yJQLg?rel=0",
+        "comment": "61"
+      },
+      {
+        "title": "Deadlocks (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rbWJXGR_scc?rel=0",
+        "comment": "62"
+      }
+    ]
+  },
+  {
+    "subject": "data-structures",
+    "title": "Data Structures",
+    "videos": [
+      {
+        "title": "Introduction to Data Structures",
+        "videoUrl": "https://www.youtube.com/embed/-NDzi6yJQLg?rel=0",
+        "comment": "63"
+      },
+      {
+        "title": "Introduction to Data Structures (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rbWJXGR_scc?rel=0",
+        "comment": "64"
+      },
+      {
+        "title": "Types of Data Structures",
+        "videoUrl": "https://www.youtube.com/embed/-NDzi6yJQLg?rel=0",
+        "comment": "65"
+      },
+      {
+        "title": "Types of Data Structures (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rbWJXGR_scc?rel=0",
+        "comment": "66"
+      },
+      {
+        "title": "Arrays",
+        "videoUrl": "https://www.youtube.com/embed/-NDzi6yJQLg?rel=0",
+        "comment": "67"
+      },
+      {
+        "title": "Arrays (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rbWJXGR_scc?rel=0",
+        "comment": "68"
+      },
+      {
+        "title": "Linked Lists",
+        "videoUrl": "https://www.youtube.com/embed/-NDzi6yJQLg?rel=0",
+        "comment": "69"
+      },
+      {
+        "title": "Linked Lists (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rbWJXGR_scc?rel=0",
+        "comment": "70"
+      },
+      {
+        "title": "Stacks",
+        "videoUrl": "https://www.youtube.com/embed/-NDzi6yJQLg?rel=0",
+        "comment": "71"
+      },
+      {
+        "title": "Stacks (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rbWJXGR_scc?rel=0",
+        "comment": "72"
+      },
+      {
+        "title": "Queues",
+        "videoUrl": "https://www.youtube.com/embed/-NDzi6yJQLg?rel=0",
+        "comment": "73"
+      },
+      {
+        "title": "Queues (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rbWJXGR_scc?rel=0",
+        "comment": "74"
+      },
+      {
+        "title": "Trees",
+        "videoUrl": "https://www.youtube.com/embed/-NDzi6yJQLg?rel=0",
+        "comment": "75"
+      },
+      {
+        "title": "Trees (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rbWJXGR_scc?rel=0",
+        "comment": "76"
+      },
+      {
+        "title": "Graphs",
+        "videoUrl": "https://www.youtube.com/embed/-NDzi6yJQLg?rel=0",
+        "comment": "77"
+      },
+      {
+        "title": "Graphs (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rbWJXGR_scc?rel=0",
+        "comment": "78"
+      },
+      {
+        "title": "Hash Tables",
+        "videoUrl": "https://www.youtube.com/embed/-NDzi6yJQLg?rel=0",
+        "comment": "79"
+      },
+      {
+        "title": "Hash Tables (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/rbWJXGR_scc?rel=0",
+        "comment": "80"
+      }
+    ]
+  },
+  {
+    "subject": "c",
+    "title": "C Programming",
+    "videos": [
+      {
+        "title": "Introduction to C",
+        "videoUrl": "https://www.youtube.com/embed/EjavYOFoJJ0?rel=0",
+        "comment": "81"
+      },
+      {
+        "title": "Introduction to C (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/DzZzpHQsILE?rel=0",
+        "comment": "82"
+      },
+      {
+        "title": "C Features",
+        "videoUrl": "https://www.youtube.com/embed/i3SWaOhjPCY?rel=0",
+        "comment": "83"
+      },
+      {
+        "title": "C Features (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/90V4XoAMkyA?rel=0",
+        "comment": "84"
+      },
+      {
+        "title": "C Variables",
+        "videoUrl": "https://www.youtube.com/embed/dhh5lrXXXYw?rel=0",
+        "comment": "85"
+      },
+      {
+        "title": "C Variables (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/9YvkAJL-TTw?rel=0",
+        "comment": "86"
+      },
+      {
+        "title": "C Data Types",
+        "videoUrl": "https://www.youtube.com/embed/NyT9vvSBoeo?rel=0",
+        "comment": "87"
+      },
+      {
+        "title": "C Data Types (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/o1w1XWuk2v8?rel=0",
+        "comment": "88"
+      },
+      {
+        "title": "C Operators",
+        "videoUrl": "https://www.youtube.com/embed/E1_Gg6dURwk?rel=0",
+        "comment": "89"
+      },
+      {
+        "title": "C Operators (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/2AzgYOC8qCk?rel=0",
+        "comment": "90"
+      },
+      {
+        "title": "C Control Statements",
+        "videoUrl": "https://www.youtube.com/embed/oYuRtXcwXqw?rel=0",
+        "comment": "91"
+      },
+      {
+        "title": "C Control Statements (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/mDAHRsWlvFY?rel=0",
+        "comment": "92"
+      },
+      {
+        "title": "C Functions",
+        "videoUrl": "https://www.youtube.com/embed/f--fD8Y0RnA?rel=0",
+        "comment": "102"
+      },
+      {
+        "title": "C Functions (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/dq4TKXxRG1w?rel=0",
+        "comment": "93"
+      },
+      {
+        "title": "C Strings",
+        "videoUrl": "https://www.youtube.com/embed/PR6D3sRM4oA?rel=0",
+        "comment": "94"
+      },
+      {
+        "title": "C Strings (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/8m4-8k5DnX8?rel=0",
+        "comment": "95"
+      },
+      {
+        "title": "C Arrays",
+        "videoUrl": "https://www.youtube.com/embed/08LWytp6PNI?rel=0",
+        "comment": "96"
+      },
+      {
+        "title": "C Arrays (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/pdBd1KEHFzE?rel=0",
+        "comment": "97"
+      },
+      {
+        "title": "C Pointers",
+        "videoUrl": "https://www.youtube.com/embed/IuDJeGqEZ3A?rel=0",
+        "comment": "98"
+      },
+      {
+        "title": "C Pointers (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/ZdQj0ivvfNs?rel=0",
+        "comment": "99"
+      },
+      {
+        "title": "C Structures",
+        "videoUrl": "https://www.youtube.com/embed/LpHnHRI6gLc?rel=0",
+        "comment": "100"
+      },
+      {
+        "title": "C Structures (Alternative)",
+        "videoUrl": "https://www.youtube.com/embed/jX8cz0a2z_s?rel=0",
+        "comment": "101"
+      }
+    ]
+  }
+]

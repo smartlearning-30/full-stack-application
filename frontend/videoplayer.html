@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch Video</title>
+  <link rel="stylesheet" href="videoplayer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="smart-user-widget" style="margin-top: 54px;" id="userWidget">
+    <div class="user-button" id="userButton">👤</div>
+    <div class="user-panel" id="userPanel">
+        <div class="user-name-display">
+            <span class="user-name-text"></span>
+        </div>
+    </div>
+  </div>
+
+  <button id="theme-toggle">🌙 Dark Mode</button>
+  <div class="container">
+    <h1>Watch the Video</h1>
+    <h2 id="subject-name">Amazing Content Awaits</h2>
+
+    <div class="video-wrapper">
+      <div class="loader"></div> 
+      <iframe id="video-frame" src="" allowfullscreen></iframe>
+    </div>
+    
+    <a id="back-link" class="btn" href="#">🔙 Go Back</a>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

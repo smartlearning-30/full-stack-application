@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Python Tutorial</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="subject.css">
+        <script src="keypointstore.js" defer></script>
+        <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top mb-5">
+        <div class="container-fluid">
+            <a class="navbar-brand style" href="index.html"><img class="image" src="https://as1.ftcdn.net/v2/jpg/02/14/74/88/1000_F_214748867_uoPLgrfEmrGErjMLKkyn15O7ZMSqXvIH.jpg" /></a>
+            <a class="navbar-brand style" href="index.html">SMART LEARNING</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-link navabar-text" href="DBMS.html">DBMS</a>
+                    <a class="nav-link navabar-text" href="JAVA.html">JAVA</a>
+                    <a class="nav-link navabar-text" href="operatingsystem.html">Operating System</a>
+                    <a class="nav-link navabar-text" href="datastructures.html">Data Structures</a>
+                    <a class="nav-link navabar-text" href="c.html">C Programming</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--Name Display Section -->
+    <div class="smart-user-widget" style="margin-top: 54px;" id="userWidget">
+        <div class="user-button" id="userButton">👤</div>
+        <div class="user-panel" id="userPanel">
+            <div class="user-name-display">
+                <span class="user-name-text"></span>
+            </div>
+        </div>
+    </div>
+
+<div class="container-fluid" id="">
+    <div class="row">
+        <nav class="col-md-3 col-lg-2 d-none d-md-block bg-dark sidebar">
+            <div class="sidebar-sticky">
+                <h4 class="text-center text-light pt-3">Topics</h4>
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link active text-light" href="#Introduction">Introduction</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="pythonquiz.html">Python Quiz</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" onclick="loadCheatSheet('python')">Python Cheat Sheet</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Features">Python Features</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Variables">Python Variables</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python DataTypes">Python DataTypes</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python KeyWords">Python KeyWords</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Literals">Python Literals</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Operators">Python Operators</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Loops">Python Loops</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Strings">Python Strings</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Lists">Python Lists</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Tuples">Python Tuples</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Dictionary">Python Dictionary</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Lambda Functions">Python Lambda Functions</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Modules">Python Modules</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Exceptions">Python Exceptions</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <nav class="col-12 d-block d-md-none bg-dark" style="margin-top:65px;">
+            <div class="text-left py-2">
+                <button class="btn btn-light" data-toggle="collapse" data-target="#mobileMenu">Topics</button>
+            </div>
+            <div id="mobileMenu" class="collapse bg-dark">
+                <ul class="nav flex-column text-left">
+                    <li class="nav-item"><a class="nav-link text-light" href="#Introduction">Introduction</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Features">Python Features</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Variables">Python Variables</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python DataTypes">Python DataTypes</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python KeyWords">Python KeyWords</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Literals">Python Literals</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Operators">Python Operators</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Loops">Python Loops</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Strings">Python Strings</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Lists">Python Lists</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Tuples">Python Tuples</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Dictionary">Python Dictionary</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Lambda Functions">Python Lambda Functions</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Modules">Python Modules</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#Python Exceptions">Python Exceptions</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        
+        <!--Main content-->
+        <div id="Introduction" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-4">
+            <h2 class="mt-5 featurespage-mnheading">Python Introduction</h2>
+            <hr>
+            <h1 class="featurespage-heading">What is Python?</h1>
+            <p>Python is a popular programming language. It was created by Guido van Rossum, and released in 1991.</p>
+            <ul>
+                <li>Web development (server-side)</li>
+                <li>Software development</li>
+                <li>Mathematics</li>
+                <li>System scripting</li>
+            </ul>
+            <h1 class="featurespage-heading">What can Python do?</h1>
+            <ul>
+                <li>Python can be used on a server to create web applications.</li>
+                <li>Python can be used alongside software to create workflows.</li>
+                <li>Python can connect to database systems. It can also read and modify files.</li>
+                <li>Python can handle big data and perform complex mathematics.</li>
+                <li>Python can be used for rapid prototyping or production-ready software development.</li>
+            </ul>
+            <h1 class="featurespage-heading">Why Python?</h1>
+            <ul>
+                <li>Python works on different platforms (Windows, Mac, Linux, Raspberry Pi, etc).</li>
+                <li>Python has a simple syntax similar to the English language.</li>
+                <li>Python has syntax that allows developers to write programs with fewer lines.</li>
+                <li>Python runs on an interpreter system, meaning rapid execution.</li>
+            </ul>
+            <h1 class="featurespage-heading">Good to know</h1>
+            <ul>
+                <li>The most recent major version of Python is Python 3.</li>
+                <li>Python can be written in a text editor or an IDE like PyCharm, VS Code, etc.</li>
+            </ul>
+            <h1 class="featurespage-heading">Python Syntax vs Other Languages</h1>
+            <ul>
+                <li>Python was designed for readability, with similarities to English.</li>
+                <li>Python uses new lines instead of semicolons or brackets to complete commands.</li>
+                <li>Python relies on indentation for scope definition, unlike curly-brackets in other languages.</li>
+            </ul>
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="video-headingmain">Introduction To Python</h1>
+                    <P class="video-paragraphmain">Avaliable Languages <span class="span">English,Telugu</span></P>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',1)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Introduction to Python</h1>
+                                    <p class="video-boxpara">Language: Telugu</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',2)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Introduction to Python</h1>
+                                    <p class="video-boxpara">Language: English</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>             
+        </div>
+        <div id="Python Features" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h2 class="mt-5 featurespage-mnheading">Python Features</h2>
+            <p>Python provides many useful features which make it popular and valuable from the other programming languages. It supports object-oriented programming, procedural programming approaches and provides dynamic memory allocation. We have listed below a few essential features.</p>
+            <h1 class="featurespage-heading">1) Easy to Learn and Use</h1>
+            <p>Python is easy to learn as compared to other programming languages. Its syntax is straightforward and much the same as the English language. There is no use of the semicolon or curly-bracket, the indentation defines the code block. It is the recommended programming language for beginners.</p>
+            <h1 class="featurespage-heading">2) Expressive Language</h1>
+            <p>Python can perform complex tasks using a few lines of code. A simple example, the hello world program you simply type print("Hello World"). It will take only one line to execute, while Java or C takes multiple lines.</p>
+            <h1 class="featurespage-heading">3) Interpreted Language</h1>
+            <p>Python is an interpreted language; it means the Python program is executed one line at a time. The advantage of being interpreted language, it makes debugging easy and portable.</p>
+            <h1 class="featurespage-heading">4) Cross-platform Language</h1>
+            <p>Python can run equally on different platforms such as Windows, Linux, UNIX, and Macintosh, etc. So, we can say that Python is a portable language. It enables programmers to develop the software for several competing platforms by writing a program only once.</p>
+            <h1 class="featurespage-heading">5) Free and Open Source</h1>
+            <p>Python is freely available for everyone. It is freely available on its official website www.python.org. It has a large community across the world that is dedicatedly working towards make new python modules and functions. Anyone can contribute to the Python community. The open-source means, "Anyone can download its source code without paying any penny."</p>
+            <h1 class="featurespage-heading">6) Object-Oriented Language</h1>
+            <p>Python supports object-oriented language and concepts of classes and objects come into existence. It supports inheritance, polymorphism, and encapsulation, etc. The object-oriented procedure helps to programmer to write reusable code and develop applications in less code.</p>
+            <h1 class="featurespage-heading">7) Extensible</h1>
+            <p>It implies that other languages such as C/C++ can be used to compile the code and thus it can be used further in our Python code. It converts the program into byte code, and any platform can use that byte code.</p>
+            <h1 class="featurespage-heading">8) Large Standard Library</h1>
+            <p>It provides a vast range of libraries for the various fields such as machine learning, web developer, and also for the scripting. There are various machine learning libraries, such as Tensor flow, Pandas, Numpy, Keras, and Pytorch, etc. Django, flask, pyramids are the popular framework for Python web development</p>
+            <h1 class="featurespage-heading">9) GUI Programming Support</h1>
+            <p>Graphical User Interface is used for the developing Desktop application. PyQT5, Tkinter, Kivy are the libraries which are used for developing the web application.</p>
+            <h1 class="featurespage-heading">10) Integrated</h1>
+            <p>It can be easily integrated with languages like C, C++, and JAVA, etc. Python runs code line by line like C,C++ Java. It makes easy to debug the code.</p>
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="video-headingmain">Features Of Python</h1>
+                    <P class="video-paragraphmain">Avaliable Languages <span class="span">English,Telugu</span></P>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',3)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Features Of Python</h1>
+                                    <p class="video-boxpara">Language: English</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',4)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Features Of Python</h1>
+                                    <p class="video-boxpara">Language: Telugu</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="Python Variables" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h2 class="mt-5 featurespage-mnheading">Python Variables</h2>
+            <p>A variable is the name given to a memory location. A value-holding Python variable is also known as an identifier.</p>
+            <p>Since Python is an infer language that is smart enough to determine the type of a variable, we do not need to specify its type in Python.</p>
+            <p>Variable names must begin with a letter or an underscore, but they can be a group of both letters and digits.</p>
+            <p>The name of the variable should be written in lowercase. Both Rahul and rahul are distinct variables.</p>
+            <h1 class="featurespage-heading">Identifier Naming</h1>
+            <p>Identifiers are things like variables. An Identifier is utilized to recognize the literals utilized in the program. The standards to name an identifier are given underneath.</p>
+            <ul class="list-style">
+                <li>The variable's first character must be an underscore or alphabet (_).</li>
+                <li>Every one of the characters with the exception of the main person might be a letter set of lower-case(a-z), capitalized (A-Z), highlight, or digit (0-9).</li>
+                <li>White space and special characters (!, @, #, %, etc.) are not allowed in the identifier name. ^, &, *).</li>
+                <li>Identifier name should not be like any watchword characterized in the language</li>
+                <li>Names of identifiers are case-sensitive; for instance, my name, and MyName isn't something very similar.</li>
+                <li>Examples of valid identifiers: a123, _n, n_9, etc.</li>
+            </ul>
+            <h1>Declaring Variable and Assigning Values</h1>
+            <ul class="list-style">
+                <li>Python doesn't tie us to pronounce a variable prior to involving it in the application. It permits us to make a variable at the necessary time.</li>
+                <li>In Python, we don't have to explicitly declare variables. The variable is declared automatically whenever a value is added to it.</li>
+                <li>The equal (=) operator is utilized to assign worth to a variable.</li>
+            </ul>
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="video-headingmain">Variables In Python</h1>
+                    <P class="video-paragraphmain">Avaliable Languages <span class="span">English,Telugu</span></P>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',29)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Variables In Python</h1>
+                                    <p class="video-boxpara">Language: English</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',30)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Variables In Python</h1>
+                                    <p class="video-boxpara">Language: Telugu</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="Python DataTypes" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h2 class="mt-5 featurespage-mnheading">Python DataTypes</h2>
+            <p>Every value has a datatype, and variables can hold values. Python is a powerfully composed language; consequently, we don't have to characterize the sort of variable while announcing it. The interpreter binds the value implicitly to its type.</p>
+            <div class="code-container">
+                a = 5
+            </div>
+            <p>We did not specify the type of the variable a, which has the value five from an integer. The Python interpreter will automatically interpret the variable as an integer.</p>
+            <p>We can verify the type of the program-used variable thanks to Python. The type() function in Python returns the type of the passed variable.</p>
+            <h1>Standard data types</h1>
+            <p>A variable can contain a variety of values. On the other hand, a person's id must be stored as an integer, while their name must be stored as a string.</p>
+            <p>Python supports three kinds of numerical data.</p>
+            <h1 class="featurespage-heading">Int:</h1>
+            <p>Whole number worth can be any length, like numbers 10, 2, 29, - 20, - 150, and so on. An integer can be any length you want in Python. Its worth has a place with int.</p>
+            <h1 class="featurespage-heading">Float:</h1>
+            <p>Float stores drifting point numbers like 1.9, 9.902, 15.2, etc. It can be accurate to within 15 decimal places.</p>
+            <h1 class="featurespage-heading">Complex:</h1>
+            <p>An intricate number contains an arranged pair, i.e., x + iy, where x and y signify the genuine and non-existent parts separately. The complex numbers like 2.14j, 2.0 + 2.3j, etc.</p>
+            <h1>Sequence Type</h1>
+            <h1 class="featurespage-heading">String</h1>
+            <p>The sequence of characters in the quotation marks can be used to describe the string. A string can be defined in Python using single, double, or triple quotes.</p>
+            <p>String dealing with Python is a direct undertaking since Python gives worked-in capabilities and administrators to perform tasks in the string.</p>
+            <p>When dealing with strings, the operation "hello"+" python" returns "hello python," and the operator + is used to combine two strings.</p>
+            <p>Because the operation "Python" *2 returns "Python," the operator * is referred to as a repetition operator.</p>
+            <div class="code-container text-left">
+                <p>
+                    str = "string using double quotes"  
+                    print(str)  
+                    s = '''''A multiline 
+                    string'''  
+                    print(s) </p>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <h1 class="video-headingmain">DataTypes In Python</h1>
+                    <P class="video-paragraphmain">Avaliable Languages <span class="span">English,Telugu</span></P>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',6)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">DataTypes In Python</h1>
+                                    <p class="video-boxpara">Language: English</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',5)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">DataTypes In Python</h1>
+                                    <p class="video-boxpara">Language: Telugu</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="Python KeyWords" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h2 class="mt-5">Python Keywords</h2>
+            <div class="keyword-container">
+                <span class="keyword">False</span>
+                <span class="keyword">None</span>
+                <span class="keyword">True</span>
+                <span class="keyword">and</span>
+                <span class="keyword">as</span>
+                <span class="keyword">assert</span>
+                <span class="keyword">break</span>
+                <span class="keyword">class</span>
+                <span class="keyword">continue</span>
+                <span class="keyword">def</span>
+                <span class="keyword">elif</span>
+                <span class="keyword">else</span>
+                <span class="keyword">except</span>
+                <span class="keyword">finally</span>
+                <span class="keyword">for</span>
+                <span class="keyword">from</span>
+                <span class="keyword">global</span>
+                <span class="keyword">if</span>
+                <span class="keyword">import</span>
+                <span class="keyword">in</span>
+                <span class="keyword">is</span>
+                <span class="keyword">lambda</span>
+                <span class="keyword">nonlocal</span>
+                <span class="keyword">not</span>
+                <span class="keyword">or</span>
+                <span class="keyword">pass</span>
+                <span class="keyword">raise</span>
+                <span class="keyword">return</span>
+                <span class="keyword">try</span>
+                <span class="keyword">while</span>
+                <span class="keyword">with</span>
+                <span class="keyword">yield</span>
+            </div>
+            <h1 class="featurespage-heading">How to Identify Python Keywords</h1>
+            <p>Python's keyword collection has evolved as new versions were introduced. The await and async keywords, for instance, were not introduced till Python 3.7. Also, in Python 2.7, the words print and exec constituted keywords; however, in Python 3+, they were changed into built-in methods and are no longer part of the set of keywords. In the paragraphs below, you'll discover numerous methods for determining whether a particular word in Python is a keyword or not.</p>
+            <h1 class="featurespage-heading">Write Code on a Syntax Highlighting IDE</h1>
+            <p>There are plenty of excellent Python IDEs available. They'll all highlight keywords to set them apart from the rest of the terms in the code. This facility will assist you in immediately identifying Python keywords during coding so that you do not misuse them.</p>
+            <h1 class="featurespage-heading">Verify Keywords with Script in a REPL</h1>
+            <p>There are several ways to detect acceptable Python keywords plus know further regarding them in the Python REPL.</p>
+            <h1 class="featurespage-heading">Look for a SyntaxError</h1>
+            <p>Lastly, if you receive a SyntaxError when attempting to allocate to it, name a method with it, or do anything else with that, and it isn't permitted, it's probably a keyword. This one is somewhat more difficult to see, but it is still a technique for Python to tell you if you're misusing a keyword.</p>
+            <h1 class="featurespage-heading">Value Keywords: True, False, None</h1>
+            <p>Three Python keywords are employed as values in this example. These are singular values, which we can reuse indefinitely and every time correspond to the same entity. These values will most probably be seen and used frequently.</p>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <h1 class="video-headingmain">Keywords In Python</h1>
+                    <P class="video-paragraphmain">Avaliable Languages <span class="span">English,Telugu</span></P>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',7)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Keywords In Python</h1>
+                                    <p class="video-boxpara">Language: English</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',8)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Keywords In Python</h1>
+                                    <p class="video-boxpara">Language: Telugu</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="Python Literals" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h2 class="mt-5 featurespage-mnheading">Python Literals</h2>
+            <p>Python Literals can be defined as data that is given in a variable or constant.</p>
+            <p>Python supports the following literals:</p>
+            <h1 class="featurespage-heading">1. String literals:</h1>
+            <p>String literals can be formed by enclosing a text in the quotes. We can use both single as well as double quotes to create a string.</p>
+            <h1 style="font-size: 18px;">Example:</h1>
+            <div class="code-container">
+                "Aman" , '12345'  
+            </div>
+            <h1 style="font-size: 18px;">Types of Strings:</h1>
+            <p>There are two types of Strings supported in Python:</p>
+            <p><span class="span1">a) Single-line String-</span>Strings that are terminated within a single-line are known as Single line Strings.</p>
+            <p><span class="span1">b) Multi-line String-</span>Strings that are enclosed within triple quotes (''' or """) are known as Multi-line Strings.</p>
+            <div class="code-container">
+                s = """This is a multi-line string
+                that spans multiple lines."""
+            </div>
+            <h1 class="featurespage-heading">2. Numeric literals:</h1>
+            <p>Numeric literals are used to represent numbers. They can be integers, floating-point numbers, or complex numbers.</p>
+            <h1 class="featurespage-heading">3. Boolean literals:</h1>
+            <p>Boolean literals represent the truth values of True and False.</p>
+            <h1 class="featurespage-heading">4. Special literals:</h1>
+            <p>Python has a special literal called None, which represents the absence of a value.</p>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <h1 class="video-headingmain">Literals In Python</h1>
+                    <P class="video-paragraphmain">Available Languages <span class="span">English,Telugu</span></P>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',9)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Literals In Python</h1>
+                                    <p class="video-boxpara">Language: English</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',10)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Literals In Python</h1>
+                                    <p class="video-boxpara">Language: Telugu</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="Python Operators" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h2 class="mt-5 featurespage-mnheading">Python Operators</h2>
+            <p>Operators are special symbols that perform operations on variables and values. Python supports various types of operators:</p>
+            
+            <h1 class="featurespage-heading">1. Arithmetic Operators:</h1>
+            <p>These operators are used to perform mathematical operations like addition, subtraction, multiplication, and division.</p>
+            <div class="code-container">
+                <p>
+                    a = 10</br>
+                    b = 5</br>
+                    print(a + b)  # Addition</br>
+                    print(a - b)  # Subtraction</br>
+                    print(a * b)  # Multiplication</br>
+                    print(a / b)  # Division</br>
+                </p>
+            </div>
+            
+            <h1 class="featurespage-heading">2. Comparison Operators:</h1>
+            <p>These operators are used to compare two values. They return a Boolean value.</p>
+            <div class="code-container">
+                <p>
+                    print(a > b)  # Greater than</br>
+                    print(a < b)  # Less than</br>
+                    print(a == b) # Equal to</br>
+                </p>
+            </div>
+            
+            <h1 class="featurespage-heading">3. Logical Operators:</h1>
+            <p>These operators are used to combine conditional statements.</p>
+            <div class="code-container">
+                <p>
+                    print(a > b and b < 10)  # Logical AND</br>
+                    print(a < b or b < 10)   # Logical OR</br>
+                </p>
+            </div>
+            
+            <h1 class="featurespage-heading">4. Assignment Operators:</h1>
+            <p>These operators are used to assign values to variables.</p>
+            <div class="code-container">
+                <p>
+                    a += 5  # Equivalent to a = a + 5</br>
+                    b *= 2  # Equivalent to b = b * 2</br>
+                </p>
+            </div>
+            
+            <h1 class="featurespage-heading">5. Bitwise Operators:</h1>
+            <p>These operators are used to perform bit-level operations.</p>
+            <div class="code-container">
+                <p>
+                    print(a & b)  # Bitwise AND</br>
+                    print(a | b)  # Bitwise OR</br>
+                    print(a ^ b)  # Bitwise XOR</br>
+                    print(~a)     # Bitwise NOT</br>
+                    print(a << 1) # Left Shift</br>
+                    print(a >> 1) # Right Shift</br>
+                </p>
+            </div>
+            
+            <h1 class="featurespage-heading">6. Membership Operators:</h1>
+            <p>These operators are used to test if a value is found in a sequence (like a list, tuple, or string).</p>
+            <div class="code-container">
+                <p>
+                    my_list = [1, 2, 3, 4, 5]</br>
+                    print(3 in my_list)  # Returns True</br>
+                    print(6 not in my_list)  # Returns True</br>
+                </p>
+            </div>
+            
+            <h1 class="featurespage-heading">7. Identity Operators:</h1>
+            <p>These operators are used to compare the memory locations of two objects.</p>
+            <div class="code-container">
+                <p>
+                    a = [1, 2, 3]</br>
+                    b = a</br>
+                    c = list(a)</br>
+                    print(a is b)  # Returns True</br>
+                    print(a is c)  # Returns False</br>
+                    print(a == c)  # Returns True</br>
+                </p>
+            </div>
+            
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <h1 class="video-headingmain">Operators In Python</h1>
+                    <P class="video-paragraphmain">Available Languages <span class="span">English,Telugu</span></P>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',11)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Operators In Python</h1>
+                                    <p class="video-boxpara">Language: English</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',12)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Operators In Python</h1>
+                                    <p class="video-boxpara">Language: Telugu</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+        <div id="Python Loops" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h2 class="mt-5 featurespage-mnheading">Python Loops</h2>
+            <p>Loops are used to execute a block of code repeatedly. Python supports two types of loops:</p>
+            
+            <h1 class="featurespage-heading">1. For Loop:</h1>
+            <p>The for loop is used to iterate over a sequence (like a list, tuple, or string).</p>
+            <div class="code-container">
+                <p>
+                    for i in range(5):</br>
+                    print(i)</br>
+                </p>
+            </div>
+            
+            <h1 class="featurespage-heading">2. While Loop:</h1>
+            <p>The while loop executes as long as a condition is true.</p>
+            <div class="code-container">
+                <p>
+                    count = 0</br>
+                    while count < 5: </br>
+                    print(count)</br>
+                    count += 1</br>
+                </p>
+            </div>
+            
+            <h1 class="featurespage-heading">3. Nested Loops:</h1>
+            <p>Loops can be nested inside another loop.</p>
+            <div class="code-container">
+                <p>
+                    for i in range(3):</br>
+                    for j in range(2):</br>
+                    print(f"i: {i}, j: {j}")</br>
+                </p>
+            </div>
+            
+            <h1 class="featurespage-heading">4. Loop Control Statements:</h1>
+            <p>Python provides control statements to modify the flow of loops:</p>
+            <ul>
+                <li><strong>break:</strong> Exits the loop.</li>
+                <li><strong>continue:</strong> Skips the current iteration and continues with the next iteration.</li>
+                <li><strong>pass:</strong> Does nothing; it's a placeholder.</li>
+            </ul>
+            <div class="code-container">
+                <p>
+                    for i in range(5):</br>
+                    if i == 2:</br>
+                    continue  # Skip the number 2</br>
+                    print(i)</br>
+                </p>
+            </div>
+            
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <h1 class="video-headingmain">Loops In Python</h1>
+                    <P class="video-paragraphmain">Available Languages <span class="span">English,Telugu</span></P>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',13)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Loops In Python</h1>
+                                    <p class="video-boxpara">Language: English</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',14)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Loops In Python</h1>
+                                    <p class="video-boxpara">Language: Telugu</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="Python Strings" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h2 class="mt-5 featurespage-mnheading">Python Strings</h2>
+            <p>Strings are a sequence of characters enclosed in quotes. Python provides various methods to manipulate strings.</p>
+            <h1 class="featurespage-heading">1. Creating Strings:</h1>
+            <div class="code-container">
+                str1 = "Hello"
+                str2 = 'World'
+            </div>
+            <h1 class="featurespage-heading">2. String Concatenation:</h1>
+            <p>Strings can be concatenated using the + operator.</p>
+            <div class="code-container">
+                str3 = str1 + " " + str2
+                print(str3)  # Output: Hello World
+            </div>
+            <h1 class="featurespage-heading">3. String Methods:</h1>
+            <p>Python provides many built-in methods for string manipulation.</p>
+            <div class="code-container">
+                print(str1.lower())  # Convert to lowercase
+                print(str2.upper())  # Convert to uppercase
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <h1 class="video-headingmain">Strings In Python</h1>
+                    <P class="video-paragraphmain">Available Languages <span class="span">English,Telugu</span></P>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',15)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Strings In Python</h1>
+                                    <p class="video-boxpara">Language: English</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',16)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Strings In Python</h1>
+                                    <p class="video-boxpara">Language: Telugu</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="Python Lists" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h2 class="mt-5 featurespage-mnheading">Python Lists</h2>
+            <p>Lists are used to store multiple items in a single variable. They are ordered, changeable, and allow duplicate values.</p>
+            <h1 class="featurespage-heading">1. Creating Lists:</h1>
+            <div class="code-container">
+                my_list = [1, 2, 3, 4, 5]
+            </div>
+            <h1 class="featurespage-heading">2. Accessing List Items:</h1>
+            <p>List items can be accessed using their index.</p>
+            <div class="code-container">
+                print(my_list[0])  # Output: 1
+            </div>
+            <h1 class="featurespage-heading">3. List Methods:</h1>
+            <p>Python provides various methods to manipulate lists.</p>
+            <div class="code-container">
+                my_list.append(6)  # Add an item
+                my_list.remove(2)  # Remove an item
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <h1 class="video-headingmain">Lists In Python</h1>
+                    <P class="video-paragraphmain">Available Languages <span class="span">English,Telugu</span></P>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',17)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Lists In Python</h1>
+                                    <p class="video-boxpara">Language: English</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',18)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Lists In Python</h1>
+                                    <p class="video-boxpara">Language: Telugu</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="Python Tuples" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h2 class="mt-5 featurespage-mnheading">Python Tuples</h2>
+            <p>Tuples are similar to lists but are immutable, meaning they cannot be changed after creation.</p>
+            <h1 class="featurespage-heading">1. Creating Tuples:</h1>
+            <div class="code-container">
+                my_tuple = (1, 2, 3, 4, 5)
+            </div>
+            <h1 class="featurespage-heading">2. Accessing Tuple Items:</h1>
+            <p>Tuple items can be accessed using their index.</p>
+            <div class="code-container">
+                print(my_tuple[0])  # Output: 1
+            </div>
+            <h1 class="featurespage-heading">3. Tuple Methods:</h1>
+            <p>Tuples have fewer built-in methods compared to lists.</p>
+            <div class="code-container">
+                print(my_tuple.count(1))  # Count occurrences of 1
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <h1 class="video-headingmain">Tuples In Python</h1>
+                    <P class="video-paragraphmain">Available Languages <span class="span">English,Telugu</span></P>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',19)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Tuples In Python</h1>
+                                    <p class="video-boxpara">Language: English</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',20)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Tuples In Python</h1>
+                                    <p class="video-boxpara">Language: Telugu</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="Python Dictionary" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h2 class="mt-5 featurespage-mnheading">Python Dictionary</h2>
+            <p>A dictionary is a collection of key-value pairs. It is unordered, changeable, and indexed.</p>
+            <h1 class="featurespage-heading">1. Creating Dictionaries:</h1>
+            <div class="code-container">
+                my_dict = {"name": "John", "age": 30}
+            </div>
+            <h1 class="featurespage-heading">2. Accessing Dictionary Items:</h1>
+            <p>Dictionary items can be accessed using their keys.</p>
+            <div class="code-container">
+                print(my_dict["name"])  # Output: John
+            </div>
+            <h1 class="featurespage-heading">3. Dictionary Methods:</h1>
+            <p>Python provides various methods to manipulate dictionaries.</p>
+            <div class="code-container">
+                my_dict["age"] = 31  # Update value
+                my_dict["city"] = "New York"  # Add new key-value pair
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <h1 class="video-headingmain">Dictionaries In Python</h1>
+                    <P class="video-paragraphmain">Available Languages <span class="span">English,Telugu</span></P>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',21)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Dictionaries In Python</h1>
+                                    <p class="video-boxpara">Language: English</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',22)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Dictionaries In Python</h1>
+                                    <p class="video-boxpara">Language: Telugu</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="Python Lambda Functions" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h2 class="mt-5 featurespage-mnheading">Python Lambda Functions</h2>
+            <p>A lambda function is a small anonymous function defined with the lambda keyword. It can take any number of arguments but can only have one expression.</p>
+            <h1 class="featurespage-heading">1. Creating Lambda Functions:</h1>
+            <div class="code-container">
+                add = lambda x, y: x + y
+                print(add(5, 3))  # Output: 8
+            </div>
+            <h1 class="featurespage-heading">2. Using Lambda Functions:</h1>
+            <p>Lambda functions are often used with functions like filter(), map(), and reduce().</p>
+            <div class="code-container">
+                my_list = [1, 2, 3, 4, 5]
+                even_numbers = list(filter(lambda x: x % 2 == 0, my_list))
+                print(even_numbers)  # Output: [2, 4]
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <h1 class="video-headingmain">Lambda Functions In Python</h1>
+                    <P class="video-paragraphmain">Available Languages <span class="span">English,Telugu</span></P>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',23)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Lambda Functions In Python</h1>
+                                    <p class="video-boxpara">Language: English</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',24)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Lambda Functions In Python</h1>
+                                    <p class="video-boxpara">Language: Telugu</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="Python Modules" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h2 class="mt-5 featurespage-mnheading">Python Modules</h2>
+            <p>Modules are files containing Python code. They can define functions, classes, and variables that can be reused in other Python programs.</p>
+            <h1 class="featurespage-heading">1. Creating a Module:</h1>
+            <p>To create a module, simply save a Python file with a .py extension.</p>
+            <h1 class="featurespage-heading">2. Importing a Module:</h1>
+            <p>Modules can be imported using the import statement.</p>
+            <div class="code-container">
+                import my_module
+            </div>
+            <h1 class="featurespage-heading">3. Using Functions from a Module:</h1>
+            <p>After importing a module, you can use its functions.</p>
+            <div class="code-container">
+                my_module.my_function()
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <h1 class="video-headingmain">Modules In Python</h1>
+                    <P class="video-paragraphmain">Available Languages <span class="span">English,Telugu</span></P>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',25)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Modules In Python</h1>
+                                    <p class="video-boxpara">Language: English</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',26)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Modules In Python</h1>
+                                    <p class="video-boxpara">Language: Telugu</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="Python Exceptions" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h2 class="mt-5 featurespage-mnheading">Python Exceptions</h2>
+            <p>Exceptions are errors that occur during the execution of a program. Python provides a way to handle these exceptions using try and except blocks.</p>
+            <h1 class="featurespage-heading">1. Handling Exceptions:</h1>
+            <p>To handle exceptions, you can use the try and except blocks.</p>
+            <div class="code-container">
+                try:
+                    print(10 / 0)
+                except ZeroDivisionError:
+                    print("You can't divide by zero!")
+            </div>
+            <h1 class="featurespage-heading">2. Finally Block:</h1>
+            <p>The finally block is executed regardless of whether an exception occurred or not.</p>
+            <div class="code-container">
+                try:
+                    print(10 / 0)
+                except ZeroDivisionError:
+                    print("You can't divide by zero!")
+                finally:
+                    print("This will always execute.")
+            </div>
+            <h1 class="featurespage-heading">3. Raising Exceptions:</h1>
+            <p>You can raise exceptions using the raise statement.</p>
+            <div class="code-container">
+                raise ValueError("A value error occurred.")
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <h1 class="video-headingmain">Exceptions In Python</h1>
+                    <P class="video-paragraphmain">Available Languages <span class="span">English,Telugu</span></P>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',27)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Exceptions In Python</h1>
+                                    <p class="video-boxpara">Language: English</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12 mt-3 mb-5">
+                        <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('python',28)">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="image-container">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                </div>
+                                <div>
+                                    <h1 class="video-boxheading">Exceptions In Python</h1>
+                                    <p class="video-boxpara">Language: Telugu</p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="floating-btn d-block d-md-none" onclick="scrollToTop()">↑</button>
+<!--Cheat Sheet Section-->
+<div class="modal fade" id="cheatSheetModal" tabindex="-1" aria-labelledby="cheatSheetTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cheatSheetTitle">Cheat Sheet</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="cheatSheetContent">
+                Loading...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveNotesBtn">Save Notes</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

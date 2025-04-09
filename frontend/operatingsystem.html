@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OS Tutorial</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="subject.css">
+    <script src="keypointstore.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top mb-5">
+        <div class="container-fluid">
+            <a class="navbar-brand style" href="index.html"><img class="image" src="https://as1.ftcdn.net/v2/jpg/02/14/74/88/1000_F_214748867_uoPLgrfEmrGErjMLKkyn15O7ZMSqXvIH.jpg" />
+            </a>
+            <a class="navbar-brand style" href="index.html">SMART LEARNING</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-link navabar-text" href="DBMS.html">DBMS</a>
+                    <a class="nav-link navabar-text" href="JAVA.html">JAVA</a>
+                    <a class="nav-link navabar-text" href="python.html">python</a>
+                    <a class="nav-link navabar-text" href="datastructures.html">Data Structures</a>
+                    <a class="nav-link navabar-text" href="c.html">C Programming</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="smart-user-widget" style="margin-top: 54px;" id="userWidget">
+        <div class="user-button" id="userButton">👤</div>
+        <div class="user-panel" id="userPanel">
+            <div class="user-name-display">
+                <span class="user-name-text"></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-3 col-lg-2 d-none d-md-block bg-dark sidebar">
+                <div class="sidebar-sticky">
+                    <h4 class="text-center text-light pt-3">Topics</h4>
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link active text-light" href="#Introduction">Introduction</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="osquiz.html">OS Quiz</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" onclick="loadCheatSheet('os')">OS Cheat Sheet</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Types">Types of Operating Systems</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Processes">Processes</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Threads">Threads</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#MemoryManagement">Memory Management</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#FileSystems">File Systems</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Deadlocks">Deadlocks</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#SchedulingAlgorithms">Scheduling Algorithms in Operating Systems</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#VirtualMemory">Virtual Memory in Operating Systems</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Security in Operating Systems">Security in Operating Systems</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <nav class="col-12 d-block d-md-none bg-dark" style="margin-top:65px;">
+                <div class="text-left py-2">
+                    <button class="btn btn-light" data-toggle="collapse" data-target="#mobileMenu">Topics</button>
+                </div>
+                <div id="mobileMenu" class="collapse bg-dark">
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link active text-light" href="#Introduction">Introduction</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Types">Types of Operating Systems</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Processes">Processes</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Threads">Threads</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#MemoryManagement">Memory Management</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#FileSystems">File Systems</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Deadlocks">Deadlocks</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#SchedulingAlgorithms">Scheduling Algorithms in Operating Systems</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#VirtualMemory">Virtual Memory in Operating Systems</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#Security in Operating Systems">Security in Operating Systems</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div id="Introduction" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-4">
+                <h2 class="mt-5 featurespage-mnheading">Operating System Introduction</h2>
+                <hr>
+                <p>An Operating System (OS) is system software that manages computer hardware, software resources, and provides common services for computer programs.</p>
+                <h1 class="featurespage-heading">Functions of an Operating System</h1>
+                <ul>
+                    <li>Process Management</li>
+                    <li>Memory Management</li>
+                    <li>File System Management</li>
+                    <li>Device Management</li>
+                    <li>Security and Access Control</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Introduction To Operating Systems</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Introduction To OS</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Introduction To OS</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+
+            <div id="Types" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">Types of Operating Systems</h2>
+                <p>Operating systems can be classified into several types:</p>
+                <h1 class="featurespage-heading">1) Batch Operating System</h1>
+                <p>Processes are collected and executed in batches.</p>
+                <h1 class="featurespage-heading">2) Time-Sharing Operating System</h1>
+                <p>Multiple users can access the system simultaneously.</p>
+                <h1 class="featurespage-heading">3) Distributed Operating System</h1>
+                <p>Manages a group of distinct computers and makes them appear to be a single computer.</p>
+                <h1 class="featurespage-heading">4) Real-Time Operating System</h1>
+                <p>Processes data as it comes in, typically without buffering delays.</p>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Types of Operating Systems</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Types of Operating Systems</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Types of Operating Systems</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Processes" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">Processes in Operating Systems</h2>
+                <p>A process is a program in execution. It is the basic unit of work in an operating system.</p>
+                <h1 class="featurespage-heading">Process States</h1>
+                <ul>
+                    <li>New</li>
+                    <li>Ready</li>
+                    <li>Running</li>
+                    <li>Waiting</li>
+                    <li>Terminated</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Processes in OS</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Processes in OS</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Processes in OS</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Threads" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">Threads in Operating Systems</h2>
+                <p>A thread is a lightweight process that can be managed independently by a scheduler.</p>
+                <h1 class="featurespage-heading">Benefits of Threads</h1>
+                <ul>
+                    <li>Less resource-intensive than processes.</li>
+                    <li>Improved performance through parallelism.</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Threads in OS</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Threads in OS</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Threads in OS</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="MemoryManagement" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">Memory Management in Operating Systems</h2>
+                <p>Memory management is the process of controlling and coordinating computer memory, allocating portions to various running programs to optimize overall system performance.</p>
+                <h1 class="featurespage-heading">Techniques of Memory Management</h1>
+                <ul>
+                    <li>Paging</li>
+                    <li>Segmentation</li>
+                    <li>Virtual Memory</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Memory Management in OS</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Memory Management in OS</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Memory Management in OS</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="FileSystems" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">File Systems in Operating Systems</h2>
+                <p>A file system is a method and data structure that the operating system uses to manage files on a disk or partition.</p>
+                <h1 class="featurespage-heading">Types of File Systems</h1>
+                <ul>
+                    <li>FAT (File Allocation Table)</li>
+                    <li>NTFS (New Technology File System)</li>
+                    <li>ext4 (Fourth Extended File System)</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">File Systems in OS</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">File Systems in OS</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">File Systems in OS</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Deadlocks" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">Deadlocks in Operating Systems</h2>
+                <p>A deadlock is a situation in a multiprogramming environment where two or more processes are unable to proceed because each is waiting for the other to release resources.</p>
+                <h1 class="featurespage-heading">Deadlock Prevention Techniques</h1>
+                <ul>
+                    <li>Mutual Exclusion</li>
+                    <li>Hold and Wait</li>
+                    <li>No Preemption</li>
+                    <li>Circular Wait</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Deadlocks in OS</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Deadlocks in OS</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Deadlocks in OS</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="SchedulingAlgorithms" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">Scheduling Algorithms in Operating Systems</h2>
+                <p>Scheduling algorithms are used by the operating system to decide which process will use the CPU at any given time.</p>
+                <h1 class="featurespage-heading">Types of Scheduling Algorithms</h1>
+                <ul>
+                    <li>First-Come, First-Served (FCFS)</li>
+                    <li>Shortest Job Next (SJN)</li>
+                    <li>Round Robin (RR)</li>
+                    <li>Priority Scheduling</li>
+                    <li>Multilevel Queue Scheduling</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Scheduling Algorithms in OS</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Scheduling Algorithms</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Scheduling Algorithms</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="VirtualMemory" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">Virtual Memory in Operating Systems</h2>
+                <p>Virtual memory is a memory management technique that provides an "idealized abstraction of the storage resources that are actually available on a given machine."</p>
+                <h1 class="featurespage-heading">Key Concepts of Virtual Memory</h1>
+                <ul>
+                    <li>Paging</li>
+                    <li>Page Replacement Algorithms (e.g., FIFO, LRU)</li>
+                    <li>Thrashing</li>
+                    <li>Demand Paging</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Virtual Memory in OS</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Virtual Memory</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Virtual Memory</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Security in Operating Systems" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h2 class="mt-5 featurespage-mnheading">Security in Operating Systems</h2>
+                <p>Operating system security involves protecting the OS from threats, viruses, worms, malware, and unauthorized access.</p>
+                <h1 class="featurespage-heading">Key Security Measures</h1>
+                <ul>
+                    <li>User Authentication</li>
+                    <li>Access Control Lists (ACLs)</li>
+                    <li>Encryption</li>
+                    <li>Firewalls</li>
+                    <li>Antivirus Software</li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="video-headingmain">Security in OS</h1>
+                        <p class="video-paragraphmain">Available Languages <span class="span">English, Telugu</span></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Security in OS</h1>
+                                        <p class="video-boxpara">Language: English</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 mt-3 mb-5">
+                            <div class="video-boxcontainer shadow-lg" onclick="redirectToTargetPage('operating-system',)">
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div class="image-container">
+                                        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/572/small/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo">
+                                    </div>
+                                    <div>
+                                        <h1 class="video-boxheading">Security in OS</h1>
+                                        <p class="video-boxpara">Language: Telugu</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Cheat Sheet Section-->
+<div class="modal fade" id="cheatSheetModal" tabindex="-1" aria-labelledby="cheatSheetTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cheatSheetTitle">Cheat Sheet</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="cheatSheetContent">
+                Loading...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveNotesBtn">Save Notes</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <button class="floating-btn d-block d-md-none" onclick="scrollToTop()">↑</button>
+</body>
+</html>

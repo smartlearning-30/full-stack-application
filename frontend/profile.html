@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+    <script src="script.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        #profileContainer {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        #getScoresBtn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        #getScoresBtn:hover {
+            background-color: #45a049;
+        }
+        
+        #scoresDisplay {
+            margin-top: 20px;
+        }
+        
+        .score-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .score-subject {
+            font-weight: bold;
+            color: #333;
+            text-transform: capitalize;
+        }
+        
+        .score-value {
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        
+        .not-attempted {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            padding: 10px;
+            background-color: #fdecea;
+            border-radius: 5px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        
+        .user-info {
+            margin-bottom: 20px;
+        }
+        #passwordForm {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+
+        #passwordForm div {
+            margin-bottom: 15px;
+        }
+
+        #passwordForm label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        #passwordForm input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .success-message {
+            color: green;
+            margin-top: 10px;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+        #passwordFormContainer {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        #passwordFormContainer h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+
+        #passwordForm div {
+            margin-bottom: 15px;
+        }
+
+        #passwordForm label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        #passwordForm input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .action-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        .action-btn:hover {
+            background-color: #45a049;
+        }
+
+        .success-message {
+            color: green;
+            margin-top: 10px;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+        .navbar
+        {
+            background-color: #121212 !important;
+            border-bottom: 3px solid #03dac6 !important; 
+        }
+        .navabar-text {
+            color: #FFA500 !important;
+            font-size: 18px;
+            font-family: "Bree Serif", serif;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navabar-text:hover {
+            color: var(--gold) !important; 
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+        }
+        .navabar-text.active {
+            color: #bb86fc !important; 
+            border-bottom: 2px solid #03dac6;
+        }
+        .image {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top mb-5">
+        <div class="container-fluid">
+            <a class="navbar-brand style" href="index.html"><img class="image" src="https://as1.ftcdn.net/v2/jpg/02/14/74/88/1000_F_214748867_uoPLgrfEmrGErjMLKkyn15O7ZMSqXvIH.jpg" />
+            </a>
+            <a class="navbar-brand style" href="index.html">SMART LEARNING</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-link navabar-text" href="index.html#Subjects">Subjects</a>
+                    <a class="nav-link navabar-text" href="index.html#Follow-us">Follow-us</a>
+                    <a class="nav-link navabar-text" href="index.html#About-us">About-us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="profileContainer" style="margin-top: 150px;">
+        <h2>Your Profile</h2>
+        <div class="user-info">
+            <div id="profileDetails"></div>
+        </div>
+        <button id="logoutBtn" class="action-btn">Logout</button>
+        <button id="togglePasswordForm" class="action-btn">Reset Password</button>
+        <div id="passwordFormContainer" style="display: none;">
+            <h3>Reset Password for <span id="usernameUppercase"></span></h3>
+            <form id="passwordForm">
+                <div>
+                    <label>Current Password:</label>
+                    <input type="password" id="currentPassword" required>
+                </div>
+                <div>
+                    <label>New Password:</label>
+                    <input type="password" id="newPassword" required minlength="6">
+                </div>
+                <button type="submit" class="action-btn">Update Password</button>
+            </form>
+            <div id="passwordMessage"></div>
+        </div>
+        <button id="getScoresBtn" class="action-btn">Get My Quiz Scores</button>
+        <div id="scoresDisplay"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="script.js"></script>
+    <title>Quiz Results</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FFA500;  
+            --secondary-color: #CC8400; 
+            --success-color: #03dac6;   
+            --error-color: #cf6679;     
+            --light-color: #f3e5f5;     
+            --dark-color: #1e1e1e;      
+            --text-color: #424242;      
+            --bg-color: #121212;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-color);
+        }
+        
+        .leaderboard-container {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .your-result {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+        }
+        
+        .your-result h2 {
+            margin-top: 0;
+        }
+        
+        .your-score {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .leaderboard-header {
+            display: grid;
+            grid-template-columns: 80px 1fr 80px;
+            padding: 10px 15px;
+            background-color: var(--light-color);
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .leaderboard-row {
+            display: grid;
+            grid-template-columns: 80px 1fr 80px;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .leaderboard-row.highlight {
+            background-color: #e6f7ff;
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        .rank {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .username {
+            text-align: left;
+            padding-left: 20px;
+        }
+        
+        .score {
+            font-weight: bold;
+            color: var(--success-color);
+        }
+        
+        .action-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .action-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        @media (max-width: 600px) {
+            .leaderboard-header, .leaderboard-row {
+                grid-template-columns: 60px 1fr 60px;
+                font-size: 0.9em;
+                padding: 10px;
+            }
+            
+            .username {
+                padding-left: 10px;
+            }
+        }
+        .back-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9em;
+            z-index: 100;
+        }
+        .back-button:hover {
+            background-color: var(--secondary-color);
+        }
+        .smart-user-widget {
+            position: absolute;
+            right: 30px;
+            top: 20px; 
+            z-index: 999;
+        }
+        
+        .user-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ff9800;
+            color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 1;
+            transform: scale(1);
+            border: 2px solid #e68a00;
+        }
+        
+        .user-button.hidden {
+            opacity: 0;
+            transform: scale(0);
+        }
+        
+        .user-panel {
+            position: absolute;
+            right: 0;
+            top: 0; 
+            width: 0;
+            height: 50px;
+            padding: 0;
+            background: rgba(18,18,18,0.9);
+            color: white;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transform-origin: top right; 
+            border: 2px solid #e68a00;
+        }
+        
+        .user-panel.visible {
+            width: 200px;
+            padding: 0 20px;
+            opacity: 1;
+        }
+        
+        .user-panel span {
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease 0.2s;
+            cursor: pointer;
+        }
+        
+        .user-panel.visible span {
+            opacity: 1;
+        }
+        
+
+        @media (max-width: 768px) {
+            .smart-user-widget {
+            right: 15px;
+            top: 15px; 
+            }
+            
+            .user-button {
+            width: 45px;
+            height: 45px;
+            font-size: 20px;
+            border-width: 1.5px;
+            }
+            
+            .user-panel.visible {
+            width: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="leaderboard-container">
+        <button class="back-button" onclick="goBackToSubject()" style="position: absolute; left: 20px; top: 20px;">← Back</button>
+        <div class="smart-user-widget" style="margin-top: 54px;" id="userWidget">
+            <div class="user-button" id="userButton">👤</div>
+            <div class="user-panel" id="userPanel">
+                <div class="user-name-display">
+                    <span class="user-name-text"></span>
+                </div>
+            </div>
+        </div>
+        <h1>Quiz Leaderboard</h1>
+        
+        <div class="your-result">
+            <h2>Your Performance</h2>
+            <div class="your-score" id="userScore">Score: Loading...</div>
+            <div id="userRank">Rank: Calculating...</div>
+        </div>
+        
+        <div class="leaderboard-header">
+            <div>Rank</div>
+            <div>Username</div>
+            <div>Score</div>
+        </div>
+        
+        <div id="leaderboardContent">
+            <!-- Leaderboard data will be loaded here -->
+        </div>
+        
+        <button class="action-btn" id="retakeQuiz">Retake Quiz</button>
+    </div>
+
+    <script>
+        // Get quiz results from session storage
+        const quizScore = sessionStorage.getItem('quizScore');
+        const quizTotal = sessionStorage.getItem('quizTotal');
+        const userId = sessionStorage.getItem('userId');
+        const username = sessionStorage.getItem('username');
+        const subject = sessionStorage.getItem('quizSubject') || 'project'; // Default to DBMS if not set
+    
+        // DOM elements
+        const leaderboardContent = document.getElementById('leaderboardContent');
+        const userScoreElement = document.getElementById('userScore');
+        const userRankElement = document.getElementById('userRank');
+        const retakeQuizBtn = document.getElementById('retakeQuiz');
+    
+        // Display user's score
+        if (quizScore && quizTotal) {
+            const percentage = Math.round((quizScore / quizTotal) * 100);
+            userScoreElement.textContent = `Score: ${quizScore}/${quizTotal} (${percentage}%)`;
+        }
+    
+        // Fetch leaderboard data from backend
+        async function fetchLeaderboard() {
+            try {
+                const response = await fetch(`http://localhost:3001/api/leaderboard?subject=${subject}`);
+                if (!response.ok) throw new Error('Failed to fetch leaderboard');
+                
+                const data = await response.json();
+                displayLeaderboard(data);
+                
+                // Find and display user's rank
+                const userRank = data.findIndex(user => user.id == userId) + 1;
+                if (userRank > 0) {
+                    userRankElement.textContent = `Rank: #${userRank}`;
+                }
+                
+            } catch (error) {
+                console.error('Error fetching leaderboard:', error);
+                leaderboardContent.innerHTML = `<div class="leaderboard-row">Error loading leaderboard. Please try again later.</div>`;
+            }
+        }
+    
+        function displayLeaderboard(users) {
+            leaderboardContent.innerHTML = '';
+            
+            users.slice(0, 10).forEach((user, index) => {
+                const row = document.createElement('div');
+                row.className = `leaderboard-row ${user.id == userId ? 'highlight' : ''}`;
+                
+                row.innerHTML = `
+                    <div class="rank">${index + 1}</div>
+                    <div class="username">${user.username}</div>
+                    <div class="score">${user.score || 0}</div>
+                `;
+                
+                leaderboardContent.appendChild(row);
+            });
+        }
+    
+        // Retake quiz button - now redirects to the correct quiz based on subject
+        retakeQuizBtn.addEventListener('click', () => {
+            const quizPages = {
+                'dbms': 'dbmsquiz.html',
+                'python': 'pythonquiz.html',
+                'java': 'javaquiz.html',
+                'operating_system': 'osquiz.html',
+                'data_structures': 'dsquiz.html',
+                'c': 'cquiz.html'
+            };
+            window.location.href = quizPages[subject] || 'dbmsquiz.html';
+        });
+    
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchLeaderboard();
+            
+            // Save score to backend if user is logged in
+            if (userId && quizScore && subject) {
+                saveScoreToBackend();
+            }
+        });
+    
+        // Save score to backend
+        async function saveScoreToBackend() {
+            try {
+                const response = await fetch(`http://localhost:3001/api/users/${userId}/scores`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        subject: subject,
+                        score: quizScore
+                    })
+                });
+                
+                if (!response.ok) throw new Error('Failed to save score');
+                
+                const result = await response.json();
+                console.log('Score saved:', result);
+                
+            } catch (error) {
+                console.error('Error saving score:', error);
+            }
+        }
+        function goBackToSubject() {
+        const subjectPages = {
+            'dbms': 'dbmsquiz.html',
+            'python': 'pythonquiz.html',
+            'java': 'javaquiz.html',
+            'operating_system': 'osquiz.html',
+            'data_structures': 'dsquiz.html',
+            'c': 'cquiz.html'
+        };
+        window.location.href = subjectPages[subject] || 'project.html';
+    }
+    </script>
+</body>
+</html>
