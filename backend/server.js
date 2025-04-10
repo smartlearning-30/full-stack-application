@@ -1,5 +1,5 @@
 const express = require('express');
-const mysql = require('mysql2');
+const { MongoClient, ObjectId } = require('mongodb');
 const cors = require('cors');
 require('dotenv').config();
 
@@ -16,67 +16,116 @@ app.use(cors({
 app.options('*', cors());
 app.use(express.json());
 
-const db = mysql.createConnection({
-  host: process.env.DB_HOST || '127.0.0.1',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'smartlearning',
-  connectTimeout: 10000,
-  enableKeepAlive: true
-});
-
+// MongoDB Atlas connection setup from .env
+const mongoUrl = process.env.MONGODB_URI; // Using the full Atlas connection string from .env
+const dbName = process.env.DB_NAME || 'smartLearning'; // Fallback to 'smartLearning' if not in .env
+let client; // Store the MongoClient instance for proper connection management
+let db;
 let dbReady = false;
+let connectionRetries = 0;
+const MAX_RETRIES = 5;
+const RETRY_DELAY = 5000; // 5 seconds between retries
 
-function handleConnect() {
-  db.connect(err => {
-    if (err) {
-      console.error('❌ Connection failed:', err.message);
-      dbReady = false;
-      setTimeout(handleConnect, 5000);
-      return;
-    }
+async function connectToMongo() {
+  try {
+    console.log('🔌 Connecting to MongoDB Atlas...');
+    
+    client = new MongoClient(mongoUrl, {
+      connectTimeoutMS: 10000,
+      socketTimeoutMS: 30000,
+      serverSelectionTimeoutMS: 5000,
+      maxPoolSize: 50,
+      retryWrites: true,
+      retryReads: true
+    });
+
+    await client.connect();
+    db = client.db(dbName);
     dbReady = true;
-    console.log('✅ Database connected');
+    connectionRetries = 0;
+    console.log('✅ Successfully connected to MongoDB Atlas');
+    
+    // Set up indexes
+    await setupIndexes();
+    
+    // Start periodic health check
     setInterval(checkDbHealth, 30000);
-  });
+    
+  } catch (err) {
+    dbReady = false;
+    connectionRetries++;
+    
+    console.error(`❌ Connection failed (attempt ${connectionRetries}/${MAX_RETRIES}):`, err.message);
+    
+    if (connectionRetries < MAX_RETRIES) {
+      console.log(`Retrying in ${RETRY_DELAY/1000} seconds...`);
+      setTimeout(connectToMongo, RETRY_DELAY);
+    } else {
+      console.error('⚠️ Maximum connection retries reached. Please check your MongoDB Atlas configuration.');
+      console.error('Verify your:', {
+        connectionString: mongoUrl ? 'present' : 'missing',
+        networkAccess: 'Check Atlas IP whitelist',
+        credentials: 'Verify username/password'
+      });
+    }
+  }
 }
 
-// Start initial connection
-handleConnect();
+async function setupIndexes() {
+  try {
+    await db.collection('users').createIndex({ username: 1 }, { unique: true });
+    console.log('🔑 Created unique index on username field');
+  } catch (err) {
+    console.error('Index creation error:', err);
+  }
+}
 
-// Database error handling
-db.on('error', err => {
-  if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-    console.log('⚠️ Connection lost - reconnecting...');
+async function checkDbHealth() {
+  try {
+    await db.command({ ping: 1 });
+    if (!dbReady) {
+      dbReady = true;
+      console.log('✅ Database connection restored');
+    }
+  } catch (err) {
     dbReady = false;
-    handleConnect();
-  } else {
-    console.error('Database error:', err);
+    console.error('⚠️ Database health check failed:', err.message);
+    // Attempt to reconnect
+    await connectToMongo();
+  }
+}
+
+// Handle graceful shutdown
+process.on('SIGINT', async () => {
+  console.log('🛑 Shutting down gracefully...');
+  try {
+    if (client) {
+      await client.close();
+      console.log('🔌 MongoDB connection closed');
+    }
+    process.exit(0);
+  } catch (err) {
+    console.error('Error closing connection:', err);
+    process.exit(1);
   }
 });
 
-// Health check function
-function checkDbHealth() {
-  db.query('SELECT 1', (err) => {
-    if (err) {
-      console.error('Health check failed:', err.message);
-      dbReady = false;
-    } else {
-      dbReady = true;
-    }
-  });
-}
+// Initialize connection
+connectToMongo();
 
 // Database status middleware
 app.use((req, res, next) => {
   if (!dbReady && req.method !== 'OPTIONS') {
     return res.status(503).json({ 
-      error: 'Database unavailable',
-      solution: 'Please try again later'
+      status: 'error',
+      error: 'Database currently unavailable',
+      solution: 'Please try again later',
+      retryIn: '5 seconds'
     });
   }
   next();
 });
+
 // Routes
 app.get('/', (req, res) => {
   res.send(`
@@ -97,21 +146,30 @@ app.get('/', (req, res) => {
 });
 
 // Get all users
-app.get('/users', (req, res) => {
-  db.query('SELECT id, username FROM users', (err, results) => {
-    if (err) {
-      console.error('Query error:', err);
-      return res.status(500).json({ 
-        error: 'Database error',
-        details: err.message
-      });
-    }
-    res.json(results);
-  });
+app.get('/users', async (req, res) => {
+  try {
+    const users = await db.collection('users')
+      .find({}, { projection: { _id: 1, username: 1 } })
+      .toArray();
+    
+    // Convert MongoDB _id to id for consistency with previous API
+    const formattedUsers = users.map(user => ({
+      id: user._id,
+      username: user.username
+    }));
+    
+    res.json(formattedUsers);
+  } catch (err) {
+    console.error('Query error:', err);
+    res.status(500).json({ 
+      error: 'Database error',
+      details: err.message
+    });
+  }
 });
 
 // Legacy user creation (without password)
-app.post('/api/users', (req, res) => {
+app.post('/api/users', async (req, res) => {
   const { username } = req.body;
   
   if (!username || typeof username !== 'string' || !username.trim()) {
@@ -123,51 +181,50 @@ app.post('/api/users', (req, res) => {
 
   const cleanName = username.trim();
 
-  db.query(
-    'SELECT id FROM users WHERE username = ?', 
-    [cleanName],
-    (err, results) => {
-      if (err) {
-        console.error('Check error:', err);
-        return res.status(500).json({ 
-          error: 'Database error',
-          details: err.message
-        });
-      }
-
-      if (results.length > 0) {
-        return res.status(409).json({
-          error: `Username "${cleanName}" already exists`,
-          solution: 'Please choose a different name'
-        });
-      }
-
-      db.query(
-        'INSERT INTO users (username) VALUES (?)',
-        [cleanName],
-        (err, result) => {
-          if (err) {
-            console.error('Insert error:', err);
-            return res.status(500).json({ 
-              error: 'Failed to create user',
-              details: err.message
-            });
-          }
-          
-          res.status(201).json({
-            success: true,
-            id: result.insertId,
-            username: cleanName,
-            message: 'User created successfully'
-          });
-        }
-      );
+  try {
+    // Check if username exists
+    const existingUser = await db.collection('users').findOne({ username: cleanName });
+    
+    if (existingUser) {
+      return res.status(409).json({
+        error: `Username "${cleanName}" already exists`,
+        solution: 'Please choose a different name'
+      });
     }
-  );
+
+    // Create new user with default scores
+    const newUser = {
+      username: cleanName,
+      scores: {
+        python: null,
+        dbms: null,
+        java: null,
+        operating_system: null,
+        data_structures: null,
+        c: null
+      },
+      createdAt: new Date()
+    };
+
+    const result = await db.collection('users').insertOne(newUser);
+    
+    res.status(201).json({
+      success: true,
+      id: result.insertedId,
+      username: cleanName,
+      message: 'User created successfully'
+    });
+  } catch (err) {
+    console.error('Database error:', err);
+    res.status(500).json({ 
+      error: 'Failed to create user',
+      details: err.message
+    });
+  }
 });
 
 // User login endpoint
-app.post('/api/login', (req, res) => {
+app.post('/api/login', async (req, res) => {
   const { username, password } = req.body;
   
   if (!username || !password) {
@@ -176,36 +233,35 @@ app.post('/api/login', (req, res) => {
     });
   }
 
-  db.query(
-    'SELECT id, username FROM users WHERE username = ? AND password = ?',
-    [username.trim(), password],
-    (err, results) => {
-      if (err) {
-        console.error('Login error:', err);
-        return res.status(500).json({ 
-          error: 'Database error',
-          details: err.message
-        });
-      }
+  try {
+    const user = await db.collection('users').findOne({
+      username: username.trim(),
+      password: password
+    });
 
-      if (results.length === 0) {
-        return res.status(401).json({
-          error: 'Invalid username or password'
-        });
-      }
-
-      res.json({
-        success: true,
-        id: results[0].id,
-        username: results[0].username,
-        message: 'Login successful'
+    if (!user) {
+      return res.status(401).json({
+        error: 'Invalid username or password'
       });
     }
-  );
+
+    res.json({
+      success: true,
+      id: user._id,
+      username: user.username,
+      message: 'Login successful'
+    });
+  } catch (err) {
+    console.error('Login error:', err);
+    res.status(500).json({ 
+      error: 'Database error',
+      details: err.message
+    });
+  }
 });
 
 // User signup endpoint
-app.post('/api/signup', (req, res) => {
+app.post('/api/signup', async (req, res) => {
   const { username, password } = req.body;
   
   if (!username || typeof username !== 'string' || !username.trim()) {
@@ -223,51 +279,51 @@ app.post('/api/signup', (req, res) => {
 
   const cleanName = username.trim();
 
-  db.query(
-    'SELECT id FROM users WHERE username = ?', 
-    [cleanName],
-    (err, results) => {
-      if (err) {
-        console.error('Check error:', err);
-        return res.status(500).json({ 
-          error: 'Database error',
-          details: err.message
-        });
-      }
-
-      if (results.length > 0) {
-        return res.status(409).json({
-          error: `Username "${cleanName}" already exists`,
-          solution: 'Please choose a different name'
-        });
-      }
-
-      db.query(
-        'INSERT INTO users (username, password) VALUES (?, ?)',
-        [cleanName, password],
-        (err, result) => {
-          if (err) {
-            console.error('Insert error:', err);
-            return res.status(500).json({ 
-              error: 'Failed to create user',
-              details: err.message
-            });
-          }
-          
-          res.status(201).json({
-            success: true,
-            id: result.insertId,
-            username: cleanName,
-            message: 'User created successfully'
-          });
-        }
-      );
+  try {
+    // Check if username exists
+    const existingUser = await db.collection('users').findOne({ username: cleanName });
+    
+    if (existingUser) {
+      return res.status(409).json({
+        error: `Username "${cleanName}" already exists`,
+        solution: 'Please choose a different name'
+      });
     }
-  );
+
+    // Create new user with default scores
+    const newUser = {
+      username: cleanName,
+      password: password,
+      scores: {
+        python: null,
+        dbms: null,
+        java: null,
+        operating_system: null,
+        data_structures: null,
+        c: null
+      },
+      createdAt: new Date()
+    };
+
+    const result = await db.collection('users').insertOne(newUser);
+    
+    res.status(201).json({
+      success: true,
+      id: result.insertedId,
+      username: cleanName,
+      message: 'User created successfully'
+    });
+  } catch (err) {
+    console.error('Database error:', err);
+    res.status(500).json({ 
+      error: 'Failed to create user',
+      details: err.message
+    });
+  }
 });
 
 // Check username availability
-app.get('/api/users/:username', (req, res) => {
+app.get('/api/users/:username', async (req, res) => {
   const username = req.params.username.trim();
   
   if (!username) {
@@ -276,318 +332,293 @@ app.get('/api/users/:username', (req, res) => {
     });
   }
 
-  db.query(
-    'SELECT id FROM users WHERE username = ?',
-    [username],
-    (err, results) => {
-      if (err) {
-        console.error('Query error:', err);
-        return res.status(500).json({ 
-          error: 'Database error',
-          details: err.message
-        });
-      }
-      
-      res.json({ 
-        available: results.length === 0,
-        message: results.length ? 'Username taken' : 'Username available'
-      });
-    }
-  );
+  try {
+    const user = await db.collection('users').findOne({ username });
+    
+    res.json({ 
+      available: !user,
+      message: user ? 'Username taken' : 'Username available'
+    });
+  } catch (err) {
+    console.error('Query error:', err);
+    res.status(500).json({ 
+      error: 'Database error',
+      details: err.message
+    });
+  }
 });
 
-// score section
-app.post('/api/users/:id/scores', (req, res) => {
+// Update user score
+app.post('/api/users/:id/scores', async (req, res) => {
   const userId = req.params.id;
   const { subject, score } = req.body;
   const validSubjects = ['python', 'dbms', 'java', 'operating_system', 'data_structures', 'c'];
 
   console.log(`Score Update Request - User: ${userId}, Subject: ${subject}, Score: ${score}`);
-  if (!userId || isNaN(userId)) {
-      return res.status(400).json({ 
-          error: 'Invalid user ID',
-          solution: 'Please provide a valid numeric user ID'
-      });
-  }
-
-  if (!subject || !validSubjects.includes(subject)) {
-      return res.status(400).json({ 
-          error: 'Invalid subject',
-          solution: `Please provide one of: ${validSubjects.join(', ')}`
-      });
-  }
-
-  if (score === undefined || isNaN(score) || score < 0) {
-      return res.status(400).json({ 
-          error: 'Invalid score',
-          solution: 'Please provide a non-negative numeric score'
-      });
-  }
-
-  const query = `
-      UPDATE users 
-      SET ${subject} = ?
-      WHERE id = ?
-  `;
-
-  console.log(`Executing: ${query} with values: [${score}, ${userId}]`);
-
-  db.query(query, [score, userId], (err, result) => {
-      if (err) {
-          console.error('Score update failed:', err);
-          return res.status(500).json({ 
-              error: 'Failed to update score',
-              details: err.message
-          });
-      }
-
-      if (result.affectedRows === 0) {
-          return res.status(404).json({ 
-              error: 'User not found',
-              solution: 'Please check the user ID'
-          });
-      }
-
-      console.log(`Score updated successfully for user ${userId}`);
-      res.json({
-          success: true,
-          userId,
-          subject,
-          score,
-          message: 'Score updated successfully'
-      });
-  });
-});
-
-app.get('/api/users/:id/scores', (req, res) => {
-  const userId = req.params.id;
   
-  if (!userId || isNaN(userId)) {
+  if (!ObjectId.isValid(userId)) {
     return res.status(400).json({ 
       error: 'Invalid user ID',
-      solution: 'Please provide a valid numeric user ID'
+      solution: 'Please provide a valid user ID'
     });
   }
 
-  const query = `
-    SELECT 
-      id, username,
-      COALESCE(python, NULL) as python,
-      COALESCE(dbms, NULL) as dbms,
-      COALESCE(java, NULL) as java,
-      COALESCE(operating_system, NULL) as operating_system,
-      COALESCE(data_structures, NULL) as data_structures,
-      COALESCE(c, NULL) as c
-    FROM users 
-    WHERE id = ?
-  `;
+  if (!subject || !validSubjects.includes(subject)) {
+    return res.status(400).json({ 
+      error: 'Invalid subject',
+      solution: `Please provide one of: ${validSubjects.join(', ')}`
+    });
+  }
 
-  db.query(query, [userId], (err, results) => {
-    if (err) {
-      console.error('Score fetch error:', err);
-      return res.status(500).json({ 
-        error: 'Failed to fetch scores',
-        details: err.message
-      });
-    }
+  if (score === undefined || isNaN(score) || score < 0) {
+    return res.status(400).json({ 
+      error: 'Invalid score',
+      solution: 'Please provide a non-negative numeric score'
+    });
+  }
 
-    if (results.length === 0) {
+  try {
+    const updateResult = await db.collection('users').updateOne(
+      { _id: new ObjectId(userId) },
+      { $set: { [`scores.${subject}`]: score } }
+    );
+
+    if (updateResult.matchedCount === 0) {
       return res.status(404).json({ 
         error: 'User not found',
         solution: 'Please check the user ID'
       });
     }
 
-    const userData = results[0];
-    
+    console.log(`Score updated successfully for user ${userId}`);
+    res.json({
+      success: true,
+      userId,
+      subject,
+      score,
+      message: 'Score updated successfully'
+    });
+  } catch (err) {
+    console.error('Score update failed:', err);
+    res.status(500).json({ 
+      error: 'Failed to update score',
+      details: err.message
+    });
+  }
+});
+
+// Get user scores
+app.get('/api/users/:id/scores', async (req, res) => {
+  const userId = req.params.id;
+  
+  if (!ObjectId.isValid(userId)) {
+    return res.status(400).json({ 
+      error: 'Invalid user ID',
+      solution: 'Please provide a valid user ID'
+    });
+  }
+
+  try {
+    const user = await db.collection('users').findOne(
+      { _id: new ObjectId(userId) },
+      { projection: { username: 1, scores: 1 } }
+    );
+
+    if (!user) {
+      return res.status(404).json({ 
+        error: 'User not found',
+        solution: 'Please check the user ID'
+      });
+    }
+
     const response = {
-      id: userData.id,
-      username: userData.username,
+      id: user._id,
+      username: user.username,
       scores: {
-        python: userData.python !== null ? userData.python : 'Not attempted',
-        dbms: userData.dbms !== null ? userData.dbms : 'Not attempted',
-        java: userData.java !== null ? userData.java : 'Not attempted',
-        operating_system: userData.operating_system !== null ? userData.operating_system : 'Not attempted',
-        data_structures: userData.data_structures !== null ? userData.data_structures : 'Not attempted',
-        c: userData.c !== null ? userData.c : 'Not attempted'
+        python: user.scores.python !== null ? user.scores.python : 'Not attempted',
+        dbms: user.scores.dbms !== null ? user.scores.dbms : 'Not attempted',
+        java: user.scores.java !== null ? user.scores.java : 'Not attempted',
+        operating_system: user.scores.operating_system !== null ? user.scores.operating_system : 'Not attempted',
+        data_structures: user.scores.data_structures !== null ? user.scores.data_structures : 'Not attempted',
+        c: user.scores.c !== null ? user.scores.c : 'Not attempted'
       }
     };
 
     res.json(response);
-  });
+  } catch (err) {
+    console.error('Score fetch error:', err);
+    res.status(500).json({ 
+      error: 'Failed to fetch scores',
+      details: err.message
+    });
+  }
 });
 
-// login details get point for the profile
 // Get full user profile (including name)
-app.get('/api/users/:id/profile', (req, res) => {
+app.get('/api/users/:id/profile', async (req, res) => {
   const userId = req.params.id;
   
-  if (!userId || isNaN(userId)) {
+  if (!ObjectId.isValid(userId)) {
     return res.status(400).json({ 
       error: 'Invalid user ID',
-      solution: 'Please provide a valid numeric user ID'
+      solution: 'Please provide a valid user ID'
     });
   }
 
-  db.query(
-    'SELECT id, username, password FROM users WHERE id = ?',
-    [userId],
-    (err, results) => {
-      if (err) {
-        console.error('Profile fetch error:', err);
-        return res.status(500).json({ 
-          error: 'Failed to fetch profile',
-          details: err.message
-        });
-      }
+  try {
+    const user = await db.collection('users').findOne(
+      { _id: new ObjectId(userId) },
+      { projection: { password: 0 } } // Exclude password by default
+    );
 
-      if (results.length === 0) {
-        return res.status(404).json({ 
-          error: 'User not found',
-          solution: 'Please check the user ID'
-        });
-      }
-
-      res.json(results[0]);
+    if (!user) {
+      return res.status(404).json({ 
+        error: 'User not found',
+        solution: 'Please check the user ID'
+      });
     }
-  );
+
+    // Convert _id to id for consistency
+    const { _id, ...userData } = user;
+    res.json({ id: _id, ...userData });
+  } catch (err) {
+    console.error('Profile fetch error:', err);
+    res.status(500).json({ 
+      error: 'Failed to fetch profile',
+      details: err.message
+    });
+  }
 });
 
-//password reset endpoint
-app.put('/api/users/:id/password', (req, res) => {
-  console.log('Password reset request received:', req.body);
+// Update password endpoint (plaintext version)
+app.put('/api/users/:id/password', async (req, res) => {
   const userId = req.params.id;
   const { currentPassword, newPassword } = req.body;
 
-  // Add validation for empty passwords
-  if (!currentPassword || currentPassword.trim() === '') {
+  // Basic validation
+  if (!currentPassword || !newPassword) {
     return res.status(400).json({ 
-      error: 'Current password is required',
-      field: 'currentPassword'
-    });
-  }
-
-  if (!newPassword || newPassword.trim() === '') {
-    return res.status(400).json({ 
-      error: 'New password is required',
-      field: 'newPassword'
+      error: 'Both current and new password are required'
     });
   }
 
   if (newPassword.length < 6) {
     return res.status(400).json({ 
-      error: 'New password must be at least 6 characters',
-      field: 'newPassword',
-      minLength: 6
+      error: 'New password must be at least 6 characters'
     });
   }
 
-  // First verify current password
-  db.query(
-    'SELECT id FROM users WHERE id = ? AND password = ?',
-    [userId, currentPassword],
-    (err, results) => {
-      if (err) {
-        console.error('Password verification error:', err);
-        return res.status(500).json({ 
-          error: 'Database error during verification',
-          details: err.message,
-          code: 'DB_VERIFICATION_ERROR'
-        });
-      }
+  if (currentPassword === newPassword) {
+    return res.status(400).json({ 
+      error: 'New password must be different from current password'
+    });
+  }
 
-      if (results.length === 0) {
-        return res.status(401).json({
-          error: 'Current password is incorrect',
-          code: 'INCORRECT_PASSWORD'
-        });
-      }
+  try {
+    // 1. Verify current password
+    const user = await db.collection('users').findOne({ 
+      _id: new ObjectId(userId),
+      password: currentPassword
+    });
 
-      // Update password
-      db.query(
-        'UPDATE users SET password = ? WHERE id = ?',
-        [newPassword, userId],
-        (err, result) => {
-          if (err) {
-            console.error('Password update error:', err);
-            return res.status(500).json({ 
-              error: 'Failed to update password in database',
-              details: err.message,
-              code: 'DB_UPDATE_ERROR'
-            });
-          }
-
-          if (result.affectedRows === 0) {
-            return res.status(404).json({
-              error: 'User not found',
-              code: 'USER_NOT_FOUND'
-            });
-          }
-
-          res.json({
-            success: true,
-            message: 'Password updated successfully',
-            timestamp: new Date().toISOString()
-          });
-        }
-      );
+    if (!user) {
+      return res.status(401).json({
+        error: 'Current password is incorrect'
+      });
     }
-  );
+
+    // 2. Update to new password
+    const result = await db.collection('users').updateOne(
+      { _id: new ObjectId(userId) },
+      { $set: { password: newPassword } }
+    );
+
+    res.json({
+      success: true,
+      message: 'Password updated successfully'
+    });
+
+  } catch (err) {
+    console.error('Password update error:', err);
+    res.status(500).json({ 
+      error: 'Database error',
+      details: err.message
+    });
+  }
 });
 
-// logout
+// Logout endpoint
 app.post('/api/logout', (req, res) => {
   try {
-      // If using session cookies:
-      res.clearCookie('sessionId'); // Replace with your cookie name
-      res.clearCookie('token'); // If using JWT
-      
-      // If using JWT in headers, the client just needs to discard the token
-      
-      res.json({
-          success: true,
-          message: 'Logged out successfully'
-      });
+    const { sessionId } = req.body;
+    
+    // Remove session
+    if (sessionId && activeSessions.has(sessionId)) {
+      activeSessions.delete(sessionId);
+    }
+    
+    // Clear cookies
+    res.clearCookie('sessionId');
+    res.clearCookie('token');
+    
+    res.json({
+      success: true,
+      message: 'Logged out successfully'
+    });
   } catch (error) {
-      console.error('Logout error:', error);
-      res.status(500).json({
-          error: 'Logout failed',
-          details: error.message
-      });
+    console.error('Logout error:', error);
+    res.status(500).json({
+      error: 'Logout failed',
+      details: error.message
+    });
   }
 });
-// leaderboard
-app.get('/api/leaderboard', (req, res) => {
+
+// Leaderboard endpoint
+app.get('/api/leaderboard', async (req, res) => {
   const subject = req.query.subject || 'python';
   const validSubjects = ['python', 'dbms', 'java', 'operating_system', 'data_structures', 'c'];
+  
   if (!validSubjects.includes(subject)) {
-      return res.status(400).json({ 
-          error: 'Invalid subject',
-          solution: `Please provide one of: ${validSubjects.join(', ')}`
-      });
+    return res.status(400).json({ 
+      error: 'Invalid subject',
+      solution: `Please provide one of: ${validSubjects.join(', ')}`
+    });
   }
-  const query = `
-      SELECT id, username, ${subject} as score 
-      FROM users 
-      WHERE ${subject} IS NOT NULL 
-      ORDER BY ${subject} DESC 
-      LIMIT 10
-  `;
-  db.query(query, (err, results) => {
-      if (err) {
-          console.error('Leaderboard query error:', err);
-          return res.status(500).json({ 
-              error: 'Failed to fetch leaderboard',
-              details: err.message
-          });
-      }
 
-      res.json(results);
-  });
+  try {
+    const leaderboard = await db.collection('users')
+      .find({ [`scores.${subject}`]: { $ne: null } })
+      .sort({ [`scores.${subject}`]: -1 })
+      .limit(10)
+      .project({ 
+        _id: 1, 
+        username: 1, 
+        score: `$scores.${subject}` 
+      })
+      .toArray();
+
+    // Convert _id to id for consistency
+    const formattedLeaderboard = leaderboard.map(user => ({
+      id: user._id,
+      username: user.username,
+      score: user.score
+    }));
+
+    res.json(formattedLeaderboard);
+  } catch (err) {
+    console.error('Leaderboard query error:', err);
+    res.status(500).json({ 
+      error: 'Failed to fetch leaderboard',
+      details: err.message
+    });
+  }
 });
+
 // Start server
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000; // Changed default to 3000 (more common for Node.js)
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
   console.log(`🛡️ CORS enabled for all origins`);
+  console.log(`🔗 MongoDB Atlas: ${mongoUrl.includes('@') ? 'Connected to Atlas' : 'Using local MongoDB'}`);
 });

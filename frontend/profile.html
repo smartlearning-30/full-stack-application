@@ -235,10 +235,22 @@
                 </div>
                 <button type="submit" class="action-btn">Update Password</button>
             </form>
-            <div id="passwordMessage"></div>
-        </div>
+            <!-- pop up -->
+            <div class="modal fade" id="passwordMessageModal" tabindex="-1" aria-labelledby="passwordMessageModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" style="margin-top: 30px; height: 130px;">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="passwordMessageModalLabel">Password Update</h5>
+                    </div>
+                    <div class="modal-body">
+                      <div id="passwordMessage" class="message-area"></div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>  
         <button id="getScoresBtn" class="action-btn">Get My Quiz Scores</button>
         <div id="scoresDisplay"></div>
     </div>
 </body>
-</html>
+</html> 

@@ -105,6 +105,8 @@ function redirectToTargetPage(subject, videoIndex) {
       setTimeout(checkScroll, 100);
   });
   
+  const API_BASE_URL = 'http://localhost:3000';
+  
   // name modal
   document.addEventListener('DOMContentLoaded', function() {
       const nameModal = $('#nameModal').modal({
@@ -195,7 +197,7 @@ function redirectToTargetPage(subject, videoIndex) {
               `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> 
               Logging in...`;
           try {
-              const response = await fetch('http://localhost:3001/api/login', {
+             const response = await fetch(`${API_BASE_URL}/api/login`, {
                   method: 'POST',
                   headers: { 
                       'Content-Type': 'application/json',
@@ -243,7 +245,7 @@ function redirectToTargetPage(subject, videoIndex) {
               `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> 
               Creating account...`;
           try {
-              const response = await fetch('http://localhost:3001/api/signup', {
+              const response = await fetch(`${API_BASE_URL}/api/signup`, {
                   method: 'POST',
                   headers: { 
                       'Content-Type': 'application/json',
@@ -414,7 +416,7 @@ function redirectToTargetPage(subject, videoIndex) {
           document.getElementById('profileContainer').innerHTML = `
               <h2>Profile</h2>
               <div class="error-message">
-                  You need to <a href="project.html">login</a> to view your profile.
+                  You need to <a href="index.html">login</a> to view your profile.
               </div>
           `;
           return;
@@ -454,7 +456,7 @@ function redirectToTargetPage(subject, videoIndex) {
       }
       try {
           scoresDisplay.innerHTML = '<p>Loading your scores...</p>';
-          const response = await fetch(`http://localhost:3001/api/users/${userId}/scores`);
+          const response = await fetch(`${API_BASE_URL}/api/users/${userId}/scores`);
           const contentType = response.headers.get('content-type');
           if (!contentType || !contentType.includes('application/json')) {
               const text = await response.text();
@@ -513,7 +515,7 @@ function redirectToTargetPage(subject, videoIndex) {
   //PROFILE FUNCTIONS 
   async function loadProfileData(userId) {
       try {
-          const response = await fetch(`http://localhost:3001/api/users/${userId}/profile`);
+        const response = await fetch(`${API_BASE_URL}/api/users/${userId}/profile`);
           const contentType = response.headers.get('content-type');
           if (!contentType || !contentType.includes('application/json')) {
               const text = await response.text();
@@ -543,97 +545,104 @@ function redirectToTargetPage(subject, videoIndex) {
           `;
       }
   }
-  // password update
-  async function updatePassword(userId) {
-      const currentPassword = document.getElementById('currentPassword').value;
-      const newPassword = document.getElementById('newPassword').value;
-      const messageDiv = document.getElementById('passwordMessage');
-      const modal = new bootstrap.Modal(document.getElementById('passwordMessageModal'));
-      messageDiv.innerHTML = '';
-      if (!currentPassword || !newPassword) {
-          showError(modal, messageDiv, 'Please fill in both password fields');
-          return;
-      }
-      if (currentPassword === newPassword) {
-          showError(modal, messageDiv, 'New password must be different from current password');
-          return;
-      }
-      try {
-          const url = `http://localhost:3001/api/users/${userId}/password`;
-          const response = await fetch(url, {
-              method: 'PUT',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Accept': 'application/json'
-              },
-              body: JSON.stringify({
-                  currentPassword,
-                  newPassword
-              }),
-              credentials: 'include' 
-          });
-          if (!response.ok) {
-              const errorData = await response.json().catch(() => ({}));
-              if (response.status === 401) {
-                  throw new Error('Current password is incorrect');
-              }
-              throw new Error(
-                  errorData.message || 
-                  `Server error: ${response.status} ${response.statusText}`
-              );
-          }
-          const data = await response.json();
-          showSuccess(modal, messageDiv, data.message);
-          document.getElementById('passwordForm').reset();
-          
-      } catch (error) {
-          console.error('Password update error:', error);
-          const errorMsg = error.message.includes('Failed to fetch') 
-              ? 'Cannot connect to server. Please try again later.' 
-              : error.message;
-              
-          showError(modal, messageDiv, errorMsg);
-      }
-  }
-  //popup
-  function showSuccess(modal, messageDiv, message) {
-      messageDiv.innerHTML = `
-          <div class="success-message text-center">
-              <i class="bi bi-check-circle-fill text-success fs-1"></i>
-              <h5 class="mt-3">Success!</h5>
-              <p>${message}</p>
-          </div>`;
-      modal.show();
-      setTimeout(() => modal.hide(), 3000);
-      const formContainer = document.getElementById('passwordFormContainer');
-      if (formContainer) {
-          formContainer.style.display = 'none';
-      }
-      setTimeout(() => modal.hide(), 10);
-  }
-  function showError(modal, messageDiv, message) {
-      messageDiv.innerHTML = `
-          <div class="error-message text-center">
-              <i class="bi bi-exclamation-circle-fill text-danger fs-1"></i>
-              <h5 class="mt-3">Error</h5>
-              <p>${message}</p>
-          </div>`;
-      modal.show();
-      setTimeout(() => modal.hide(), 3000);
-  }
+
+
+// Update the password update function
+async function updatePassword(userId) {
+    const currentPassword = document.getElementById('currentPassword').value;
+    const newPassword = document.getElementById('newPassword').value;
+    const messageDiv = document.getElementById('passwordMessage');
+    
+    // Clear previous messages
+    messageDiv.innerHTML = '';
+    messageDiv.className = 'message-area'; // Reset classes
+    
+    // Basic validation
+    if (!currentPassword || !newPassword) {
+        showMessage(messageDiv, 'Both fields are required', 'error');
+        return;
+    }
+    
+    if (newPassword.length < 6) {
+        showMessage(messageDiv, 'Password must be at least 6 characters', 'error');
+        return;
+    }
+    
+    if (currentPassword === newPassword) {
+        showMessage(messageDiv, 'New password must be different', 'error');
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://localhost:3000/api/users/${userId}/password`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                currentPassword,
+                newPassword
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(data.error || 'Password update failed');
+        }
+        
+        // Success
+        showMessage(messageDiv, data.message || 'Password updated successfully', 'success');
+        document.getElementById('passwordForm').reset();
+        
+        // Hide form after successful update (optional)
+        setTimeout(() => {
+            document.getElementById('passwordFormContainer').style.display = 'none';
+        }, 2000);
+        
+    } catch (error) {
+        console.error('Password update error:', error);
+        showMessage(messageDiv, error.message, 'error');
+    }
+}
+
+function showMessage(element, message, type) {
+    element.innerHTML = message;
+    element.className = 'message-area'; // Reset classes
+    element.classList.add(type === 'error' ? 'text-danger' : 'text-success');
+    const messageModal = new bootstrap.Modal(document.getElementById('passwordMessageModal'));
+    messageModal.show();
+    const delay = type === 'success' ? 1000 : 3000;
+    setTimeout(() => {
+        messageModal.hide();
+    }, delay);
+}
+
   //logout
   async function logoutUser() {
-      try {
-          localStorage.removeItem('userName');
-          localStorage.removeItem('userId');
-          localStorage.removeItem('token');
-          await fetch('http://localhost:3001/api/logout', {
-              method: 'POST',
-              credentials: 'include' 
-          });
-          window.location.href = 'index.html';
-      } catch (error) {
-          console.error('Logout error:', error);
-          alert('Error during logout. Please try again.');
+    try {
+      const sessionId = localStorage.getItem('sessionId');
+      
+      const response = await fetch(`${API_BASE_URL}/api/logout`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ sessionId }),
+        credentials: 'include'
+      });
+      
+      if (!response.ok) {
+        throw new Error('Logout request failed');
       }
+      localStorage.removeItem('userName');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('token');
+      localStorage.removeItem('sessionId');
+      
+      window.location.href = 'index.html';
+    } catch (error) {
+      console.error('Logout error:', error);
+      alert('Error during logout. Please try again.');
+    }
   }

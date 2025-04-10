@@ -277,7 +277,7 @@
         const quizTotal = sessionStorage.getItem('quizTotal');
         const userId = sessionStorage.getItem('userId');
         const username = sessionStorage.getItem('username');
-        const subject = sessionStorage.getItem('quizSubject') || 'project'; // Default to DBMS if not set
+        const subject = sessionStorage.getItem('quizSubject') || 'index'; // Default to DBMS if not set
     
         // DOM elements
         const leaderboardContent = document.getElementById('leaderboardContent');
@@ -294,7 +294,7 @@
         // Fetch leaderboard data from backend
         async function fetchLeaderboard() {
             try {
-                const response = await fetch(`http://localhost:3001/api/leaderboard?subject=${subject}`);
+                const response = await fetch(`http://localhost:3000/api/leaderboard?subject=${subject}`);
                 if (!response.ok) throw new Error('Failed to fetch leaderboard');
                 
                 const data = await response.json();
@@ -355,7 +355,7 @@
         // Save score to backend
         async function saveScoreToBackend() {
             try {
-                const response = await fetch(`http://localhost:3001/api/users/${userId}/scores`, {
+                const response = await fetch(`http://localhost:3000/api/users/${userId}/scores`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -384,7 +384,7 @@
             'data_structures': 'dsquiz.html',
             'c': 'cquiz.html'
         };
-        window.location.href = subjectPages[subject] || 'project.html';
+        window.location.href = subjectPages[subject] || 'index.html';
     }
     </script>
 </body>
