@@ -2042,7 +2042,7 @@ async function endQuiz() {
     sessionStorage.setItem('quizSubject', subject);
     if (userId) {
         try {
-            const response = await fetch(`http://localhost:3000/api/users/${userId}/scores`, {
+            const response = await fetch(`https://full-stack-application-y2jd.onrender.com/api/users/${userId}/scores`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -105,7 +105,7 @@ function redirectToTargetPage(subject, videoIndex) {
       setTimeout(checkScroll, 100);
   });
   
-  const API_BASE_URL = 'http://localhost:3000';
+  const API_BASE_URL = 'https://full-stack-application-y2jd.onrender.com';
   
   // name modal
   document.addEventListener('DOMContentLoaded', function() {
@@ -152,7 +152,7 @@ function redirectToTargetPage(subject, videoIndex) {
               `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> 
               Checking availability...`;
           try {
-              const response = await fetch('http://localhost:3001/api/users', {
+              const response = await fetch('https://full-stack-application-y2jd.onrender.com/api/users', {
                   method: 'POST',
                   headers: { 
                       'Content-Type': 'application/json',
@@ -574,7 +574,7 @@ async function updatePassword(userId) {
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/api/users/${userId}/password`, {
+        const response = await fetch(`https://full-stack-application-y2jd.onrender.com/api/users/${userId}/password`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
