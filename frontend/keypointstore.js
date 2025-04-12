@@ -1355,6 +1355,18 @@ const questions = {
             answer: "a",
             hint: "It belongs to a package that includes collections and utility classes.",
             explanation: "The `Scanner` class is part of the `java.util` package."
+        },
+        {
+            question: "Which of these is NOT a valid Java identifier?",
+            options: [
+                "a) myVariable",
+                "b) _123var",
+                "c) 7days",
+                "d) $amount"
+            ],
+            answer: "c",
+            hint: "Java identifiers cannot start with a digit.",
+            explanation: "`7days` is invalid because Java identifiers must not start with a number (though they can contain digits)."
         }
     ],
     operating_system: [
