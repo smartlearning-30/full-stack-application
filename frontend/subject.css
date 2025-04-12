@@ -434,7 +434,68 @@ ul, li {
     }
 }
 
-
-
-
-/*quiz css */
+    /* Notification panel */
+    .notification-tab {
+        position: fixed;
+        top: 60%;
+        right: 0;
+        background: var(--bg-dark);
+        color: var(--text-light);
+        width: 40px;
+        height: 150px;
+        writing-mode: vertical-rl;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 6px 0 0 6px;
+        cursor: pointer;
+        z-index: 1050;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        transition: opacity 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        border: 1px solid var(--cyan);
+    }
+    
+    .notification-tab.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    .notification-panel {
+        position: fixed;
+        top: 60%;
+        right: -300px;
+        width: 300px;
+        background: var(--bg-dark);
+        color: var(--text-light);
+        border-radius: 8px 0 0 8px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        padding: 20px;
+        transition: right 0.3s ease;
+        z-index: 1049;
+        cursor: pointer;
+        border: 1px solid var(--border-dark);
+    }
+    
+    .notification-panel.open {
+        right: 0;
+    }
+    
+    h5 {
+        font-size: 15px;
+        color: var(--text-light);
+    }
+    
+    .btn-discord {
+        color:var(--text-light);
+        font-weight: bold;
+        width: 75%;
+        border: 1px solid var(--secondary-accent);
+    }
+    
+    .btn-discord:hover {
+        background-color: #02c2b0;
+    }

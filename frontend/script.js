@@ -105,6 +105,24 @@ function redirectToTargetPage(subject, videoIndex) {
       setTimeout(checkScroll, 100);
   });
   
+    // Notification panel
+    const tab = document.getElementById("notificationTab");
+    const panel = document.getElementById("notificationPanel");
+    tab.addEventListener("click", () => {
+      panel.classList.add("open");
+      tab.classList.add("hidden");
+    });
+    panel.addEventListener("click", () => {
+      panel.classList.remove("open");
+      tab.classList.remove("hidden");
+    });
+    document.addEventListener("click", (e) => {
+      if (!panel.contains(e.target) && !tab.contains(e.target)) {
+        panel.classList.remove("open");
+        tab.classList.remove("hidden");
+      }
+    });
+    
   const API_BASE_URL = 'https://full-stack-application-y2jd.onrender.com';
   
   // name modal
