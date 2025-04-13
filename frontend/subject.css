@@ -41,25 +41,27 @@ h1 {
     font-weight: 500;
 }
 
-.navbar
-{
-    background-color: var(--bg-dark) !important;
-    border-bottom: 3px solid var(--secondary-accent) !important; 
+.navbar {
+    background-color: #121212 !important;
+    border-bottom: 3px solid #03dac6 !important; 
 }
+
 .navabar-text {
-    color: var(--orange) !important;
+    color: #bb86fc !important;
     font-size: 18px;
     font-family: "Bree Serif", serif;
     font-weight: 500;
     transition: color 0.3s ease;
 }
+
 .navabar-text:hover {
-    color: var(--gold) !important; /* #FFD700 for hover */
-    text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+    color: #03dac6 !important;
+    text-shadow: 0 0 5px rgba(3, 218, 198, 0.3);
 }
+
 .navabar-text.active {
-    color: var(--primary-accent) !important; /* #bb86fc */
-    border-bottom: 2px solid var(--secondary-accent);
+    color: #bb86fc !important; 
+    border-bottom: 1px solid #03dac6;
 }
 
 .span, .span1 {
@@ -73,8 +75,8 @@ h1 {
     font-family: "Bree Serif", serif;
     font-weight: 500;
     margin-top: 71px;
+    
 }
-
 .featurespage-heading {
     color: #fff;
     font-size: 21px;
@@ -90,7 +92,6 @@ h1 {
     height: 100vh;
     width: 250px;
     overflow-y: auto;
-    /* background-color: #343a40; */
     background-color: var(--bg-dark) !important;
     color: white;
     padding-top: 10px;
@@ -103,7 +104,6 @@ h1 {
 }
 
 .sidebar .nav-link:hover {
-    /* background-color: #495057; */
     background-color: var(--primary-accent);
 }
 
@@ -123,44 +123,25 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
+    cursor: pointer;
     padding: 20px;
     height: 100%;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
 }
-
-.video-boxcontainer:hover {
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4);
-    transform: scale(1.05) rotate(2deg);
-    border-color: transparent;
-    border-image: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%) 1;
-    border-radius: 25px;
-    animation: pulse 1.5s infinite, bounce 0.6s ease;
-    box-shadow: 0px 0px 15px rgba(0, 204, 255, 0.8);
-}
-
 .video-boxheading {
     font-size: 1.5rem;
     font-family: 'Roboto', sans-serif;
-    font-style: italic;
     margin: 15px;
     font-weight: bold;
-    transition: all 0.3s ease;
+}
+
+.video-boxcontainer:hover {
+    color: khaki;
+    font-style: italic;
 }
 
 .video-boxpara {
     font-size: 1.25rem;
     font-family: 'Roboto', sans-serif;
-    font-style: italic;
-    transition: all 0.3s ease;
-}
-
-.video-boxcontainer:hover .video-boxheading,
-.video-boxcontainer:hover .video-boxpara {
-    color: #FFFFFF;
-    transform: translateY(-5px);
-    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7);
 }
 
 /* ============ CODE & KEYWORDS ============ */
@@ -362,8 +343,8 @@ h6 {
 
 /* ============ IMAGES ============ */
 .image {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 43px;
 }
 
 .image-container {
@@ -376,19 +357,6 @@ h6 {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-}
-
-/* ============ ANIMATIONS ============ */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-@keyframes bounce {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
 }
 
 /* ============ SCROLL ANIMATIONS ============ */

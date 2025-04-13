@@ -14,13 +14,15 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
             background-color: #121212;
             color: #ffffff;
         }
-        
+        .profilecontain
+        {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 20px;
+        }
         #profileContainer {
             background-color: #1e1e1e;
             padding: 25px;
@@ -159,12 +161,55 @@
             background-color: #1e1e1e;
             color: white;
         }
+          /* ============ Footer ============ */
+        .smartlearning-footer {
+            background-color: #121212;
+            color: #e0e0e0;
+            border-top: 1px solid #03dac6;
+            border-radius: 25px;
+            
+            }
+
+            .footer-heading {
+                color: #bb86fc;
+                font-family: 'Bree Serif', serif;
+                padding-bottom: 8px;
+                display: inline-block;
+            }
+            
+            .footer-link {
+                color: #e0e0e0;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+            
+            .footer-link:hover {
+                color: #03dac6;
+                font-style: italic;
+                padding-left: 5px;
+            }
+
+            .footer-paragraph
+            {
+                font-family:"Roboto";
+                transition: all 0.3s ease;
+                font-size: 14px;
+            }
+            .footer-paragraph:hover {
+                color: #03dac6;
+                padding-left: 5px;
+            }
+            .footerimage
+            {
+                width: 60px;
+                height: 60px;
+            }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top mb-5">
         <div class="container-fluid">
-            <a class="navbar-brand style" href="index.html"><img class="image" src="https://as1.ftcdn.net/v2/jpg/02/14/74/88/1000_F_214748867_uoPLgrfEmrGErjMLKkyn15O7ZMSqXvIH.jpg" />
+            <a class="navbar-brand style" href="index.html"><img class="image" src="https://res.cloudinary.com/degc1ivlq/image/upload/v1744555838/smarticon_bk0jpt.png" />
             </a>
             <a class="navbar-brand style" href="index.html">SMART LEARNING</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -179,7 +224,7 @@
             </div>
         </div>
     </nav>
-    <div id="profileContainer" style="margin-top: 150px;">
+    <div id="profileContainer" class="profilecontain" style="margin-top: 150px;">
         <h2>Your Profile</h2>
         <div class="user-info">
             <div id="profileDetails"></div>
@@ -216,5 +261,41 @@
         <button id="getScoresBtn" class="action-btn">Get My Quiz Scores</button>
         <div id="scoresDisplay"></div>
     </div>
+    <footer class="smartlearning-footer py-5 mt-5">
+        <div class="container">
+          <div class="row">
+            <div class=" col-12 col-md-4 mb-4">
+              <div class="d-flex flex-row ">
+                <img class="footerimage" src="https://res.cloudinary.com/degc1ivlq/image/upload/v1744555838/smarticon_bk0jpt.png"/>
+                <h3 class="footer-heading mt-2" style="margin-left: 15px;">Smart Learning</h3>
+              </div>
+              <p class="pe-5 mt-1 footer-link">Designed to transform coding education one student at a time.</p>
+            </div>
+            <div class=" col-6 col-md-4 mb-4">
+              <h3 class="footer-heading">Subjects</h3>
+              <ul class="list-unstyled">
+                <li class="mb-2"><a href="JAVA.html" class="footer-link subject-java">Java Programming</a></li>
+                <li class="mb-2"><a href="python.html" class="footer-link subject-python">Python</a></li>
+                <li class="mb-2"><a href="DBMS.html" class="footer-link subject-dbms">DBMS</a></li>
+                <li class="mb-2"><a href="datastructures.html" class="footer-link subject-ds">Data Structures</a></li>
+                <li class="mb-2"><a href="c.html" class="footer-link subject-c">C Programming</a></li>
+                <li class="mb-2"><a href="operatingsystem.html" class="footer-link subject-os">Operating Systems</a></li>
+              </ul>
+            </div>
+            <div class="col-6 col-md-4 mb-4">
+              <h3 class="footer-heading">Resources</h3>
+              <ul class="list-unstyled">
+                <li class="mb-2"><a  class="footer-link">Tutorials</a></li>
+                <li class="mb-2"><a  class="footer-link">Practice Exercises</a></li>
+                <li class="mb-2"><a  class="footer-link">Cheat Sheets</a></li>
+                <li class="mb-2"><a  class="footer-link">Video Lectures</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="border-top border-secondary pt-4 mt-4 text-center">
+            <p class="mb-3">© 2025 SmartLearning. All rights reserved.</p>
+          </div>
+        </div>
+    </footer>
 </body>
 </html> 

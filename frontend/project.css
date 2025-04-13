@@ -4,44 +4,41 @@ body {
     color: #ffffff;
 }
 
-.navbar
-{
+.navbar {
     background-color: #121212 !important;
     border-bottom: 3px solid #03dac6 !important; 
 }
+
 .navabar-text {
-    color: #FFA500 !important;
+    color: #bb86fc !important;
     font-size: 18px;
     font-family: "Bree Serif", serif;
     font-weight: 500;
     transition: color 0.3s ease;
 }
+
 .navabar-text:hover {
-    color: #FFD700 !important; 
-    text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+    color: #03dac6 !important;
+    text-shadow: 0 0 5px rgba(3, 218, 198, 0.3);
 }
+
 .navabar-text.active {
     color: #bb86fc !important; 
-    border-bottom: 2px solid #03dac6;
+    border-bottom: 1px solid #03dac6;
 }
 
 .image {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
 }
 
 .hero-section {
     margin-top: 50px;
-    position: relative;
-    height:1000px;
-    background: url("https://res.cloudinary.com/degc1ivlq/image/upload/v1744524620/ChatGPT_Image_Apr_13_2025_11_35_31_AM_mthibk.png");
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 8%;
-    color: white;
-    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    background-size: cover; 
+    background-position: center;
+    background-image: url("https://res.cloudinary.com/degc1ivlq/image/upload/v1744544893/main_up9cdx.png");
 }
 
 h1 {
@@ -57,33 +54,6 @@ p {
     margin-bottom: 20px;
 }
 
-.btn {
-    background: #ff8c00;
-    color: white;
-    padding: 12px 24px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    display: inline-block;
-    margin-top: 10px;
-    transition: all 0.3s ease-in-out;
-}
-
-.btn:hover {
-    background: #e67e00;
-    transform: scale(1.05);
-}
-
-.btn-alt {
-    background: #1c9974;
-    margin-left: 10px;
-}
-
-.btn-alt:hover {
-    background: #188b64;
-    transform: scale(1.05);
-}
-
 .card {
     width: 150px;
     height: 150px;
@@ -91,14 +61,16 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: white;
+    background: #121212;
+    opacity: 75%;
+    border: 1px solid #2a2a2a; 
     border-radius: 10px;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border:1px solid #03dac6;
 }
 
 .dark-theme-img {
@@ -124,11 +96,12 @@ p {
 }
 
 .box-image {
-    width: 35%;
+    width: 50%;
 }
 
 .box-font {
-    color: #333;
+    color: #fff;
+    opacity: 70%;
     font-size: 19px;
     margin-top: 10px;
     text-align: center;
@@ -199,7 +172,7 @@ p {
 #signupModal .modal-content {
     background-color: #2d2d2d;
     color: white;
-    border: 1px solid #ff9800;
+    border: 1px solid #1dd1a1;
     border-radius: 8px;
 }
 
@@ -211,7 +184,7 @@ p {
 
 #loginModal .modal-title,
 #signupModal .modal-title {
-    color: #ff9800;
+    color: #bb86fc;
     font-weight: 600;
 }
 
@@ -228,14 +201,14 @@ p {
 #signupModal .form-control:focus {
     background-color: #444;
     color: white;
-    border-color: #ff9800;
+    border-color: #333;
     box-shadow: 0 0 0 0.2rem rgba(255, 152, 0, 0.25);
 }
 
 #loginModal .btn-primary,
 #signupModal .btn-primary {
-    background-color: #ff9800;
-    border-color: #ff9800;
+    background-color: #bb86fc;
+    border-color: #bb86fc;
     padding: 10px;
     font-weight: 600;
     transition: all 0.3s;
@@ -243,8 +216,8 @@ p {
 
 #loginModal .btn-primary:hover,
 #signupModal .btn-primary:hover {
-    background-color: #e68a00;
-    border-color: #e68a00;
+    background-color: #bb86fc;
+    border-color: #bb86fc;
     transform: translateY(-2px);
 }
 
@@ -358,7 +331,6 @@ p {
     background-color: #333;
     background-color: #121212;
     color: #e0e0e0;
-    /* border-top: 1px solid #333; */
     border-top: 1px solid #03dac6;
     border-radius: 25px;
     
@@ -395,6 +367,6 @@ p {
   }
   .footerimage
   {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
   }
