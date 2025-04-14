@@ -1897,7 +1897,6 @@ const questions = {
 /*################################################################*/
 /*--------------------   Quiz JavaScript   -----------------------*/
 /*################################################################*/
-
 const pageToSubject = {
     'dbmsquiz.html': 'dbms',
     'pythonquiz.html': 'python',
@@ -1906,8 +1905,10 @@ const pageToSubject = {
     'dsquiz.html': 'data_structures',
     'cquiz.html': 'c'
 };
-const currentPage = window.location.pathname.split('/').pop();
+const currentPage = window.location.pathname.split('/').pop().toLowerCase();
+console.log('Current page:', currentPage);
 const subject = pageToSubject[currentPage] || 'dbms';
+console.log('Mapped subject:', subject);
 const currentQuestions = questions[subject];
 const totalQuestions = currentQuestions.length;
 let currentQuestionIndex = 0;
