@@ -327,7 +327,7 @@
                 
                 row.innerHTML = `
                     <div class="rank">${index + 1}</div>
-                    <div class="username">${user.username}</div>
+                    <div class="username">${user.username.toUpperCase()}</div>
                     <div class="score">${user.score || 0}</div>
                 `;
                 

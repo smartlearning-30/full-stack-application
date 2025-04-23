@@ -22,28 +22,33 @@ function redirectToTargetPage(subject, videoIndex) {
     const urlParams = new URLSearchParams(window.location.search);
     let subject = urlParams.get('subject'); 
     let videoIndex = urlParams.get('videoIndex'); 
+    const normalizedSubject = subject ? subject.trim().toLowerCase() : "";
     if (subject) {
-        subject = subject.trim(); 
-        subject = subject.charAt(0).toUpperCase() + subject.slice(1).toLowerCase(); 
+        subject = subject.trim().split(" ").map(word =>
+            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+        ).join(" ");
     }
+
     document.getElementById('subject-name').textContent = subject ? `Subject: ${subject}` : "Subject: Unknown";
+
     const subjectPages = {
-        "Python": "python.html",
-        "DBMS": "DBMS.html",
-        "Java": "JAVA.html",
-        "Operating System": "operatingsystem.html",
-        "Data Structures": "datastructures.html",
-        "C": "c.html"
+        "python": "python.html",
+        "dbms": "DBMS.html",
+        "java": "JAVA.html",
+        "operating system": "operatingsystem.html",
+        "data structures": "datastructures.html",
+        "c": "c.html"
     };
-  
-    const prevPage = subjectPages[subject] ? subjectPages[subject] : "index.html";
-  
+
+    const prevPage = subjectPages[normalizedSubject] || "index.html";
+    document.getElementById('back-link').href = prevPage;
+
     fetch('videos.json')
         .then(response => response.json())
         .then(data => {
-            const subjectData = data.find(item => item.subject.trim().toLowerCase() === subject.toLowerCase());
+            const subjectData = data.find(item => item.subject.trim().toLowerCase() === normalizedSubject);
             if (subjectData) {
-                const videoData = subjectData.videos.find(video => video.comment === videoIndex.toString());
+                const videoData = subjectData.videos.find(video => video.comment === videoIndex);
                 if (videoData) {
                     document.getElementById('video-frame').src = videoData.videoUrl;
                 } else {
@@ -56,23 +61,21 @@ function redirectToTargetPage(subject, videoIndex) {
         .catch(err => {
             document.querySelector('.video-wrapper').innerHTML = '<p>Error loading video data.</p>';
         });
-  
-    document.getElementById('back-link').href = prevPage;
-  
+
     const videoFrame = document.getElementById('video-frame');
     const loader = document.querySelector('.loader');
-  
+
     videoFrame.onload = function () {
         videoFrame.classList.add('loaded');
         loader.classList.add('hidden');
     };
-  
+
     const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('click', () => {
         document.body.classList.toggle('light-mode');
         themeToggle.textContent = document.body.classList.contains('light-mode') ? '🌙 Dark Mode' : '☀️ Light Mode';
     });
-  });
+});
   // Scroll Animation
   document.addEventListener("DOMContentLoaded", function() {
       const animateElements = document.querySelectorAll(
