@@ -1899,13 +1899,12 @@ const questions = {
 /*################################################################*/
 const pageToSubject = {
     'dbmsquiz.html': 'dbms',
-    'pythonquiz.html': 'python',
+    'pythonquiz.html': 'python', 
     'javaquiz.html': 'java',
-    'osquiz.html': 'operating_system',
+    'osquiz.html': 'operating_system',  // Changed from 'os' to match questions key
     'dsquiz.html': 'data_structures',
     'cquiz.html': 'c'
 };
-
 // Get current page with better error handling
 function getCurrentPage() {
     try {
@@ -1927,23 +1926,16 @@ function getCurrentPage() {
     }
 }
 
-const currentPage = getCurrentPage();
-console.log('Current page:', currentPage);
-console.log('Available mappings:', Object.keys(pageToSubject));
+console.log("All available subjects in questions:", Object.keys(questions));
+console.log("Current page detected:", currentPage);
+console.log("Subject mapped:", subject);
 
 const subject = pageToSubject[currentPage];
-if (!subject) {
-    console.error('No subject found for page:', currentPage);
-    // Instead of silently defaulting, show an error or redirect
-    document.getElementById('quizContainer').innerHTML = `
-        <div class="error">
-            <h3>Quiz Configuration Error</h3>
-            <p>No quiz found for page: ${currentPage}</p>
-            <p>Available quizzes: ${Object.keys(pageToSubject).join(', ')}</p>
-            <a href="index.html">Return to Home</a>
-        </div>
-    `;
-    throw new Error(`No subject found for page: ${currentPage}`);
+if (!questions[subject]) {
+    console.error("Questions not found for subject:", subject);
+    console.log("Available subjects:", Object.keys(questions));
+    alert(`Error: No questions found for ${subject}. Available subjects: ${Object.keys(questions).join(', ')}`);
+    return;
 }
 
 console.log('Mapped subject:', subject);
