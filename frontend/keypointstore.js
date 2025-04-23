@@ -1899,59 +1899,17 @@ const questions = {
 /*################################################################*/
 const pageToSubject = {
     'dbmsquiz.html': 'dbms',
-    'pythonquiz.html': 'python', 
+    'pythonquiz.html': 'python',
     'javaquiz.html': 'java',
-    'osquiz.html': 'operating_system',  // Changed from 'os' to match questions key
+    'osquiz.html': 'operating_system',
     'dsquiz.html': 'data_structures',
     'cquiz.html': 'c'
 };
-// Get current page with better error handling
-function getCurrentPage() {
-    try {
-        const pathParts = window.location.pathname.split('/');
-        let page = pathParts.pop().toLowerCase();
-        
-        // Handle cases where page might have query parameters or hashes
-        page = page.split('?')[0].split('#')[0];
-        
-        if (!page) {
-            // If we got an empty string, try the last part again
-            page = pathParts.pop().toLowerCase() || 'dbmsquiz.html';
-        }
-        
-        return page;
-    } catch (error) {
-        console.error('Error getting current page:', error);
-        return 'dbmsquiz.html'; // Default fallback
-    }
-}
-
-console.log("All available subjects in questions:", Object.keys(questions));
-console.log("Current page detected:", currentPage);
-console.log("Subject mapped:", subject);
-
-const subject = pageToSubject[currentPage];
-if (!questions[subject]) {
-    console.error("Questions not found for subject:", subject);
-    console.log("Available subjects:", Object.keys(questions));
-    alert(`Error: No questions found for ${subject}. Available subjects: ${Object.keys(questions).join(', ')}`);
-    return;
-}
-
+const currentPage = window.location.pathname.split('/').pop().toLowerCase();
+console.log('Current page:', currentPage);
+const subject = pageToSubject[currentPage] || 'dbms';
 console.log('Mapped subject:', subject);
 const currentQuestions = questions[subject];
-if (!currentQuestions) {
-    console.error('No questions found for subject:', subject);
-    document.getElementById('quizContainer').innerHTML = `
-        <div class="error">
-            <h3>Quiz Questions Error</h3>
-            <p>No questions found for: ${subject}</p>
-            <a href="index.html">Return to Home</a>
-        </div>
-    `;
-    throw new Error(`No questions found for subject: ${subject}`);
-}
-
 const totalQuestions = currentQuestions.length;
 let currentQuestionIndex = 0;
 let score = 0;
