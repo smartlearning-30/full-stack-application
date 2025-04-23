@@ -1905,11 +1905,61 @@ const pageToSubject = {
     'dsquiz.html': 'data_structures',
     'cquiz.html': 'c'
 };
-const currentPage = window.location.pathname.split('/').pop().toLowerCase();
+
+// Get current page with better error handling
+function getCurrentPage() {
+    try {
+        const pathParts = window.location.pathname.split('/');
+        let page = pathParts.pop().toLowerCase();
+        
+        // Handle cases where page might have query parameters or hashes
+        page = page.split('?')[0].split('#')[0];
+        
+        if (!page) {
+            // If we got an empty string, try the last part again
+            page = pathParts.pop().toLowerCase() || 'dbmsquiz.html';
+        }
+        
+        return page;
+    } catch (error) {
+        console.error('Error getting current page:', error);
+        return 'dbmsquiz.html'; // Default fallback
+    }
+}
+
+const currentPage = getCurrentPage();
 console.log('Current page:', currentPage);
-const subject = pageToSubject[currentPage] || 'dbms';
+console.log('Available mappings:', Object.keys(pageToSubject));
+
+const subject = pageToSubject[currentPage];
+if (!subject) {
+    console.error('No subject found for page:', currentPage);
+    // Instead of silently defaulting, show an error or redirect
+    document.getElementById('quizContainer').innerHTML = `
+        <div class="error">
+            <h3>Quiz Configuration Error</h3>
+            <p>No quiz found for page: ${currentPage}</p>
+            <p>Available quizzes: ${Object.keys(pageToSubject).join(', ')}</p>
+            <a href="index.html">Return to Home</a>
+        </div>
+    `;
+    throw new Error(`No subject found for page: ${currentPage}`);
+}
+
 console.log('Mapped subject:', subject);
 const currentQuestions = questions[subject];
+if (!currentQuestions) {
+    console.error('No questions found for subject:', subject);
+    document.getElementById('quizContainer').innerHTML = `
+        <div class="error">
+            <h3>Quiz Questions Error</h3>
+            <p>No questions found for: ${subject}</p>
+            <a href="index.html">Return to Home</a>
+        </div>
+    `;
+    throw new Error(`No questions found for subject: ${subject}`);
+}
+
 const totalQuestions = currentQuestions.length;
 let currentQuestionIndex = 0;
 let score = 0;
