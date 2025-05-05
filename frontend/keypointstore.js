@@ -1899,13 +1899,33 @@ const questions = {
 /*################################################################*/
 const pageToSubject = {
     'dbmsquiz.html': 'dbms',
+    'dbmsquiz': 'dbms', // in case .html is omitted
     'pythonquiz.html': 'python',
+    'pythonquiz': 'python',
     'javaquiz.html': 'java',
+    'javaquiz': 'java',
     'osquiz.html': 'operating_system',
+    'osquiz': 'operating_system',
     'dsquiz.html': 'data_structures',
-    'cquiz.html': 'c'
+    'dsquiz': 'data_structures',
+    'cquiz.html': 'c',
+    'cquiz': 'c'
 };
-const currentPage = window.location.pathname.split('/').pop().toLowerCase();
+function getCurrentPage() {
+    // Get the full path
+    const path = window.location.pathname.toLowerCase();
+    
+    // Extract just the filename
+    const filename = path.split('/').pop();
+    
+    // Handle cases where the path might end with a slash
+    if (!filename || filename === '/') {
+        return 'dbmsquiz.html'; // default
+    }
+    
+    return filename;
+}
+const currentPage = getCurrentPage();
 console.log('Current page:', currentPage);
 const subject = pageToSubject[currentPage] || 'dbms';
 console.log('Mapped subject:', subject);
